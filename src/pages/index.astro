@@ -1,30 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Sign313 from '../components/Sign313.astro';
-import { SITE, OFFERS, GIGS, MUSICIANS, url, asset } from '../consts';
+import { SITE, OFFERS, GIGS, MUSICIANS, asset } from '../consts';
+
+const offerImgs = ['images/gig-01.jpg', 'images/band-03.jpg', 'images/gig-05.jpg', 'images/band-06.jpg'];
+const groups = [
+  { n: 3, label: 'Hohe Bläser', sub: 'Trompeten & Flügelhörner' },
+  { n: 1, label: 'Schlagzeug', sub: 'Das treibende Rückgrat' },
+  { n: 3, label: 'Tiefe Bläser', sub: 'Posaunen & Tuba' },
+];
 ---
 
 <Layout>
   <!-- ============ HERO · KM 00 ============ -->
-  <section class="hero" data-km="00" data-label="Start">
+  <section id="start" class="hero" data-km="00" data-label="Start">
     <div class="hero__media">
       <img src={asset('images/band-04.jpg')} alt="Brass.313 live" fetchpriority="high" />
       <div class="hero__overlay"></div>
     </div>
     <div class="container hero__content lane">
-      <div class="hero__sign" data-reveal><Sign313 size="lg" /><span class="hero__sign-cap">Württemberg · die Strecke der Band</span></div>
+      <span class="km" data-reveal><span class="km__dot"></span>Württemberg · entlang der B313</span>
       <h1 class="display hero__title" data-reveal style="--reveal-delay:.08s">Brass<span class="dot">.</span>313</h1>
       <p class="hero__claim" data-reveal style="--reveal-delay:.16s">{SITE.claim}</p>
       <p class="lead hero__lead" data-reveal style="--reveal-delay:.24s">{SITE.description}</p>
       <div class="hero__actions" data-reveal style="--reveal-delay:.32s">
-        <a class="btn btn-primary" href={url('termine')}>Nächster Halt <span class="arr">→</span></a>
-        <a class="btn btn-ghost" href={url('kontakt')}>Buchungsanfrage</a>
+        <a class="btn btn-primary" href="#termine">Nächster Halt <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="#kontakt">Buchungsanfrage</a>
       </div>
     </div>
   </section>
 
   <!-- ============ KM 01 · Wer wir sind ============ -->
-  <section class="section-pad" data-km="01" data-label="Wer wir sind">
+  <section id="band" class="section-pad" data-km="01" data-label="Wer wir sind">
     <div class="container lane intro">
       <div class="intro__text">
         <span class="km" data-reveal><span class="km__dot"></span>KM 01 · Wer wir sind</span>
@@ -41,7 +47,7 @@ import { SITE, OFFERS, GIGS, MUSICIANS, url, asset } from '../consts';
             für die Bundesstraße B313, die sich durch unsere Heimat im Ländle zieht.
           </p>
         </div>
-        <a class="btn btn-ghost" href={url('musiker')} data-reveal style="--reveal-delay:.18s">Die Besetzung <span class="arr">→</span></a>
+        <a class="btn btn-ghost" href="#musiker" data-reveal style="--reveal-delay:.18s">Die Besetzung <span class="arr">→</span></a>
       </div>
       <div class="intro__images" data-reveal style="--reveal-delay:.12s">
         <img class="intro__img intro__img--a" src={asset('images/band-01.jpg')} alt="Brass.313 Porträt" loading="lazy" />
@@ -51,11 +57,11 @@ import { SITE, OFFERS, GIGS, MUSICIANS, url, asset } from '../consts';
     </div>
   </section>
 
-  <!-- ============ KM 02 · Die Strecke (Auftritte) ============ -->
-  <section class="section-pad segments-sec" data-km="02" data-label="Die Strecke">
+  <!-- ============ KM 02 · Auftritte ============ -->
+  <section id="auftritte" class="section-pad segments-sec" data-km="02" data-label="Auftritte">
     <div class="container lane">
       <div class="sec-head" data-reveal>
-        <span class="km"><span class="km__dot"></span>KM 02 · Die Strecke</span>
+        <span class="km"><span class="km__dot"></span>KM 02 · Auftritte</span>
         <h2 class="section-title">Für jeden Anlass<br />der richtige Sound</h2>
       </div>
       <div class="segments">
@@ -67,46 +73,58 @@ import { SITE, OFFERS, GIGS, MUSICIANS, url, asset } from '../consts';
           </article>
         ))}
       </div>
-      <div class="center" style="margin-top:2.5rem" data-reveal>
-        <a class="btn btn-primary" href={url('auftritte')}>Alle Auftrittsformen <span class="arr">→</span></a>
+
+      <div class="gallery" data-reveal style="margin-top:1.6rem">
+        <img src={asset(offerImgs[0])} alt="Brass.313 live" loading="lazy" />
+        <img src={asset('images/gig-02.jpg')} alt="Brass.313 Auftritt" loading="lazy" />
+        <img src={asset('images/band-08.jpg')} alt="Brass.313 Ensemble" loading="lazy" />
+        <img src={asset('images/band-03.jpg')} alt="Brass.313 Bühne" loading="lazy" />
+        <img src={asset('images/gig-05.jpg')} alt="Brass.313 Konzert" loading="lazy" />
+        <img src={asset('images/band-06.jpg')} alt="Brass.313 Porträt" loading="lazy" />
       </div>
     </div>
   </section>
 
-  <!-- ============ KM 03 · Nächster Halt (Termine) ============ -->
-  <section class="section-pad" data-km="03" data-label="Nächster Halt">
+  <!-- ============ KM 03 · Termine ============ -->
+  <section id="termine" class="section-pad" data-km="03" data-label="Nächster Halt">
     <div class="container lane">
-      <div class="sec-head sec-head--row" data-reveal>
-        <div>
-          <span class="km"><span class="km__dot"></span>KM 03 · Nächster Halt</span>
-          <h2 class="section-title">Wo ihr uns hört</h2>
-        </div>
-        <a class="btn btn-ghost gigs__cta" href={url('termine')}>Alle Termine 2026</a>
+      <div class="sec-head" data-reveal>
+        <span class="km"><span class="km__dot"></span>KM 03 · Termine 2026</span>
+        <h2 class="section-title">Die Route 2026</h2>
+        <p class="lead" style="margin-top:0.8rem">Jeder Auftritt ist eine Station auf der Strecke. Kommt vorbei und erlebt Brass.313 live.</p>
       </div>
-      <ul class="stops">
+
+      <ol class="route-stops">
         {GIGS.map((g, i) => (
-          <li class="stop" data-reveal style={`--reveal-delay:${i * 0.06}s`}>
-            <span class="stop__node"></span>
-            <div class="stop__date">
-              <span class="stop__day">{g.day}</span>
-              <span class="stop__month">{g.month}</span>
+          <li class="rstop" data-reveal style={`--reveal-delay:${i * 0.06}s`}>
+            <div class="rstop__marker">
+              <span class="rstop__node"></span>
+              {i === 0 && <span class="rstop__badge">Nächster Halt</span>}
             </div>
-            <div class="stop__main">
-              <h3 class="stop__title">{g.title}</h3>
-              <p class="stop__loc muted">{g.location}</p>
-            </div>
-            <div class="stop__meta">
-              <span class="stop__time">{g.time}</span>
-              <span class="stop__note muted">{g.note}</span>
+            <div class="rstop__card">
+              <div class="rstop__date">
+                <span class="rstop__day">{g.day}</span>
+                <span class="rstop__month">{g.month}</span>
+                <span class="rstop__year">2026</span>
+              </div>
+              <div class="rstop__main">
+                <h3 class="rstop__title">{g.title}</h3>
+                <p class="rstop__loc muted">{g.location}</p>
+              </div>
+              <div class="rstop__meta">
+                <span class="rstop__time">{g.time}</span>
+                <span class="rstop__note">{g.note}</span>
+              </div>
             </div>
           </li>
         ))}
-      </ul>
+      </ol>
+      <p class="route-note muted" data-reveal>Alle Angaben ohne Gewähr — Änderungen vorbehalten.</p>
     </div>
   </section>
 
-  <!-- ============ KM 04 · Die Besetzung (Musiker) ============ -->
-  <section class="band-strip" data-km="04" data-label="Die Besetzung">
+  <!-- ============ KM 04 · Musiker ============ -->
+  <section id="musiker" class="band-strip" data-km="04" data-label="Die Besetzung">
     <div class="band-strip__media">
       <img src={asset('images/band-08.jpg')} alt="Brass.313 Ensemble" loading="lazy" />
       <div class="band-strip__overlay"></div>
@@ -117,22 +135,94 @@ import { SITE, OFFERS, GIGS, MUSICIANS, url, asset } from '../consts';
       <ul class="band-names" data-reveal style="--reveal-delay:.1s">
         {MUSICIANS.map((m) => <li>{m.name}</li>)}
       </ul>
-      <a class="btn btn-ghost" href={url('musiker')} data-reveal style="--reveal-delay:.18s">Mehr über die Band <span class="arr">→</span></a>
     </div>
   </section>
 
-  <!-- ============ KM 05 · Buchung ============ -->
-  <section class="section-pad" data-km="05" data-label="Buchung">
-    <div class="container lane cta" data-reveal>
-      <span class="km" style="justify-content:center"><span class="km__dot"></span>KM 05 · Endstation: eure Bühne</span>
-      <h2 class="cta__title">Holt euch Brass.313<br />auf eure Bühne</h2>
-      <p class="lead mx-auto center">
-        Konzert, Festzelt, Firmenfeier oder Event-Umrahmung — schreibt uns, und wir stimmen
-        alles individuell auf euren Anlass ab.
-      </p>
-      <div class="hero__actions" style="justify-content:center;margin-top:2rem">
-        <a class="btn btn-primary" href={`mailto:${SITE.email}`}>{SITE.email}</a>
-        <a class="btn btn-ghost" href={url('kontakt')}>Zum Kontaktformular</a>
+  <!-- Formation 3·1·3 + Fotos -->
+  <section class="section-pad" data-km="04b" data-label="Formation 3·1·3">
+    <div class="container lane">
+      <div class="sec-head" data-reveal>
+        <span class="km"><span class="km__dot"></span>Die Formation</span>
+        <h2 class="section-title">Warum 313?</h2>
+        <p class="lead" style="margin-top:1rem">
+          Der Name verrät die Besetzung — und die Heimat: drei hohe Bläser, ein Schlagzeuger, drei
+          tiefe Bläser. Die <span class="brass-text">313</span> steht zugleich für die Bundesstraße
+          B313, die sich durch unser Ländle zieht.
+        </p>
+      </div>
+
+      <div class="formation" data-reveal>
+        <div class="formation__line"></div>
+        {groups.map((g) => (
+          <div class="fgroup">
+            <span class="fgroup__num">{g.n}</span>
+            <div class="fgroup__notes">
+              {Array.from({ length: g.n }).map(() => <span class="note"></span>)}
+            </div>
+            <h3 class="fgroup__label">{g.label}</h3>
+            <p class="fgroup__sub muted">{g.sub}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="members-grid" data-reveal style="margin-top:2.4rem">
+        <img src={asset('images/band-01.jpg')} alt="Brass.313" loading="lazy" />
+        <img src={asset('images/band-06.jpg')} alt="Brass.313" loading="lazy" />
+        <img src={asset('images/gig-02.jpg')} alt="Brass.313" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KM 05 · Kontakt ============ -->
+  <section id="kontakt" class="section-pad kontakt-sec" data-km="05" data-label="Kontakt">
+    <div class="container lane">
+      <div class="sec-head center mx-auto" data-reveal>
+        <span class="km" style="justify-content:center"><span class="km__dot"></span>KM 05 · Endstation: eure Bühne</span>
+        <h2 class="section-title">Holt euch Brass.313 auf eure Bühne</h2>
+      </div>
+
+      <div class="contact">
+        <aside class="contact__info" data-reveal>
+          <ul class="contact__list">
+            <li>
+              <span class="contact__label">E-Mail</span>
+              <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+            </li>
+            <li>
+              <span class="contact__label">Instagram</span>
+              <a href={SITE.instagram} target="_blank" rel="noopener">@brass.313</a>
+            </li>
+            <li>
+              <span class="contact__label">Region</span>
+              <span class="contact__plain">Württemberg · entlang der B313</span>
+            </li>
+          </ul>
+          <p class="contact__note muted">
+            Für Buchungsanfragen nennt uns gern Datum, Ort, Anlass und die gewünschte Auftrittsform —
+            so können wir euch direkt ein passendes Angebot machen.
+          </p>
+        </aside>
+
+        <form class="contact__form" id="contact-form" data-reveal style="--reveal-delay:.1s">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required placeholder="Euer Name" />
+          </div>
+          <div class="field">
+            <label for="email">E-Mail</label>
+            <input id="email" name="email" type="email" required placeholder="name@beispiel.de" />
+          </div>
+          <div class="field">
+            <label for="anlass">Anlass / Datum</label>
+            <input id="anlass" name="anlass" type="text" placeholder="z. B. Sommerfest, 12.07.2026" />
+          </div>
+          <div class="field">
+            <label for="nachricht">Nachricht</label>
+            <textarea id="nachricht" name="nachricht" rows="5" required placeholder="Erzählt uns von eurem Anlass …"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Nachricht senden <span class="arr">→</span></button>
+          <p class="contact__hint muted">Öffnet euer E-Mail-Programm mit vorausgefüllter Nachricht.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -140,14 +230,7 @@ import { SITE, OFFERS, GIGS, MUSICIANS, url, asset } from '../consts';
 
 <style>
   /* HERO */
-  .hero {
-    position: relative;
-    min-height: 100svh;
-    display: flex;
-    align-items: flex-end;
-    padding-bottom: clamp(3rem, 8vh, 5.5rem);
-    overflow: hidden;
-  }
+  .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; padding-bottom: clamp(3rem, 8vh, 5.5rem); overflow: hidden; }
   .hero__media { position: absolute; inset: 0; z-index: -1; }
   .hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
   .hero__overlay {
@@ -157,25 +240,9 @@ import { SITE, OFFERS, GIGS, MUSICIANS, url, asset } from '../consts';
       radial-gradient(120% 80% at 18% 92%, rgba(182,130,46,0.2), transparent 60%);
   }
   .hero__content { position: relative; }
-  .hero__sign { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.4rem; }
-  .hero__sign-cap {
-    font-family: var(--font-sign);
-    font-size: 0.72rem;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--muted);
-    max-width: 14ch;
-    line-height: 1.4;
-  }
-  .hero__title { margin: 0 0 0.3rem -0.04em; }
+  .hero__title { margin: 0.6rem 0 0.3rem -0.04em; }
   .hero__title .dot { color: var(--signal); }
-  .hero__claim {
-    font-family: var(--font-body);
-    font-style: italic;
-    font-size: clamp(1.4rem, 4vw, 2.5rem);
-    color: var(--messing-hell);
-    margin-bottom: 1.3rem;
-  }
+  .hero__claim { font-family: var(--font-body); font-style: italic; font-size: clamp(1.4rem, 4vw, 2.5rem); color: var(--messing-hell); margin-bottom: 1.3rem; }
   .hero__lead { margin-bottom: 2rem; }
   .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
@@ -183,93 +250,77 @@ import { SITE, OFFERS, GIGS, MUSICIANS, url, asset } from '../consts';
   .intro { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
   .intro .btn { margin-top: 1.8rem; }
   .intro__images { position: relative; aspect-ratio: 4/5; }
-  .intro__img {
-    position: absolute;
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 30px 60px -25px rgba(0,0,0,0.85);
-    border: 1px solid var(--line);
-  }
+  .intro__img { position: absolute; object-fit: cover; border-radius: 4px; box-shadow: 0 30px 60px -25px rgba(0,0,0,0.85); border: 1px solid var(--line); }
   .intro__img--a { width: 72%; height: 82%; top: 0; left: 0; z-index: 2; }
   .intro__img--b { width: 52%; height: 56%; bottom: 0; right: 0; z-index: 3; }
+  /* formation roundel (brass medallion, not a sign) */
   .intro__formation {
     position: absolute;
-    top: 6%;
-    right: 2%;
+    top: 5%;
+    right: 0;
     z-index: 4;
     font-family: var(--font-sign);
     font-weight: 700;
-    font-size: clamp(1.6rem, 4vw, 2.6rem);
-    color: var(--nacht);
-    background: var(--signal);
-    padding: 0.3em 0.5em;
-    border-radius: 4px;
-    box-shadow: inset 0 0 0 3px var(--nacht), 0 10px 30px -10px rgba(255,210,30,0.5);
+    font-size: clamp(1.2rem, 2.8vw, 1.7rem);
+    letter-spacing: 0.02em;
+    color: var(--messing-hell);
+    background: rgba(22,19,15,0.82);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--messing-tief);
+    width: clamp(78px, 12vw, 112px);
+    height: clamp(78px, 12vw, 112px);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 40px -8px var(--messing-glow);
   }
   @media (max-width: 820px) { .intro { grid-template-columns: 1fr; } .intro__images { max-width: 440px; } }
 
   /* SECTION HEAD */
   .sec-head { margin-bottom: 3rem; }
   .sec-head .section-title { margin-top: 0.7rem; }
-  .sec-head--row { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; }
 
   /* SEGMENTS */
   .segments-sec { background: linear-gradient(180deg, transparent, rgba(237,230,216,0.02)); }
   .segments { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
-  .segment {
-    background: var(--nacht);
-    padding: 2rem 1.5rem;
-    transition: background 0.4s var(--ease);
-  }
+  .segment { background: var(--nacht); padding: 2rem 1.5rem; transition: background 0.4s var(--ease); }
   .segment:hover { background: var(--nacht-2); }
-  .segment__tag {
-    font-family: var(--font-sign);
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--messing-tief);
-  }
+  .segment__tag { font-family: var(--font-sign); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--messing-tief); }
   .segment__title { font-size: 1.35rem; margin: 0.7rem 0 0.6rem; color: var(--messing-hell); }
   .segment__text { font-size: 0.95rem; }
   @media (max-width: 900px) { .segments { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 520px) { .segments { grid-template-columns: 1fr; } }
 
-  /* STOPS (gigs as route stops) */
-  .stops { list-style: none; position: relative; }
-  .stops::before { content: ''; position: absolute; left: 5px; top: 12px; bottom: 12px; width: 2px; background: var(--line-strong); }
-  .stop {
-    position: relative;
-    display: grid;
-    grid-template-columns: 78px 1fr auto;
-    gap: 1.8rem;
-    align-items: center;
-    padding: 1.5rem 0 1.5rem 2.4rem;
-    border-bottom: 1px solid var(--line);
-  }
-  .stop:first-child { border-top: 1px solid var(--line); }
-  .stop__node {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 12px;
-    height: 12px;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    background: var(--nacht);
-    border: 2px solid var(--messing);
-    transition: background 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
-  }
-  .stop:hover .stop__node { background: var(--signal); border-color: var(--signal); box-shadow: 0 0 14px 0 rgba(255,210,30,0.5); }
-  .stop__date { display: flex; flex-direction: column; align-items: flex-start; }
-  .stop__day { font-family: var(--font-sign); font-weight: 700; font-size: 2.3rem; line-height: 0.9; color: var(--messing-hell); }
-  .stop__month { font-family: var(--font-sign); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
-  .stop__title { font-size: 1.5rem; }
-  .stop__meta { text-align: right; font-family: var(--font-sign); }
-  .stop__time { display: block; font-weight: 600; letter-spacing: 0.04em; }
-  .stop__note { font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  /* GALLERY */
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+  .gallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px; border: 1px solid var(--line); filter: grayscale(0.2) brightness(0.95); transition: transform 0.5s var(--ease), filter 0.5s var(--ease); }
+  .gallery img:hover { transform: scale(1.02); filter: none; }
+  @media (max-width: 760px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ROUTE STOPS (Termine) */
+  .route-stops { list-style: none; position: relative; }
+  .route-stops::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: repeating-linear-gradient(to bottom, var(--messing-tief) 0 12px, transparent 12px 26px); }
+  .rstop { position: relative; padding-left: 2.8rem; padding-bottom: 1.2rem; }
+  .rstop__marker { position: absolute; left: 0; top: 1.7rem; }
+  .rstop__node { position: absolute; left: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--nacht); border: 3px solid var(--messing); transition: background 0.35s var(--ease), border-color 0.35s var(--ease); }
+  .rstop:first-child .rstop__node { background: var(--signal); border-color: var(--signal); box-shadow: 0 0 16px 0 rgba(255,210,30,0.55); }
+  .rstop:hover .rstop__node { background: var(--messing-hell); border-color: var(--messing-hell); }
+  .rstop__badge { position: absolute; left: 28px; top: -2px; font-family: var(--font-sign); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--signal); white-space: nowrap; }
+  .rstop__card { display: grid; grid-template-columns: 92px 1fr auto; gap: 1.8rem; align-items: center; padding: 1.5rem 1.6rem; background: var(--nacht-2); border: 1px solid var(--line); border-radius: 4px; transition: border-color 0.35s var(--ease), transform 0.35s var(--ease); }
+  .rstop:hover .rstop__card { border-color: var(--messing-tief); transform: translateX(4px); }
+  .rstop__date { display: flex; flex-direction: column; align-items: flex-start; border-right: 1px solid var(--line); padding-right: 1.2rem; }
+  .rstop__day { font-family: var(--font-sign); font-weight: 700; font-size: 2.6rem; line-height: 0.85; color: var(--messing-hell); }
+  .rstop__month { font-family: var(--font-sign); font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); margin-top: 0.2rem; }
+  .rstop__year { font-family: var(--font-sign); font-size: 0.66rem; letter-spacing: 0.18em; color: var(--dim); }
+  .rstop__title { font-size: clamp(1.4rem, 3vw, 2rem); }
+  .rstop__meta { text-align: right; font-family: var(--font-sign); }
+  .rstop__time { display: block; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.04em; }
+  .rstop__note { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .route-note { margin-top: 0.6rem; margin-left: 2.8rem; font-size: 0.86rem; }
   @media (max-width: 660px) {
-    .stop { grid-template-columns: 64px 1fr; gap: 1.1rem; }
-    .stop__meta { grid-column: 2; text-align: left; }
+    .rstop__card { grid-template-columns: 74px 1fr; gap: 1rem; }
+    .rstop__meta { grid-column: 2; text-align: left; }
+    .route-note { margin-left: 0; }
   }
 
   /* BAND STRIP */
@@ -279,17 +330,67 @@ import { SITE, OFFERS, GIGS, MUSICIANS, url, asset } from '../consts';
   .band-strip__overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(22,19,15,0.96) 0%, rgba(22,19,15,0.78) 48%, rgba(22,19,15,0.42) 100%); }
   .band-strip__content { max-width: 640px; }
   .band-strip__content .section-title { margin: 0.7rem 0 0; }
-  .band-names { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem 1.3rem; margin: 1.6rem 0 2rem; }
-  .band-names li {
-    font-family: var(--font-body);
-    font-size: clamp(1.1rem, 2.4vw, 1.55rem);
-    position: relative;
-    padding-right: 1.3rem;
-  }
+  .band-names { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem 1.3rem; margin: 1.6rem 0 0; }
+  .band-names li { font-family: var(--font-body); font-size: clamp(1.1rem, 2.4vw, 1.55rem); position: relative; padding-right: 1.3rem; }
   .band-names li:not(:last-child)::after { content: '·'; position: absolute; right: 0; color: var(--messing); }
 
-  /* CTA */
-  .cta { text-align: center; max-width: 760px; }
-  .cta .km { display: inline-flex; }
-  .cta__title { font-size: clamp(2.4rem, 6.5vw, 4.6rem); margin: 0.7rem 0 1.4rem; }
+  /* FORMATION */
+  .formation { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; padding: 2.5rem 0; }
+  .formation__line { position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: repeating-linear-gradient(to right, var(--messing-tief) 0 14px, transparent 14px 28px); }
+  .fgroup { position: relative; text-align: center; background: var(--nacht); padding: 1.5rem 1rem; }
+  .fgroup__num { font-family: var(--font-sign); font-weight: 700; font-size: clamp(3rem, 8vw, 5rem); color: var(--messing-hell); line-height: 1; text-shadow: 0 0 40px var(--messing-glow); }
+  .fgroup__notes { display: flex; justify-content: center; gap: 0.5rem; margin: 1rem 0; }
+  .note { width: 16px; height: 16px; border-radius: 50%; background: var(--messing); box-shadow: 0 0 0 4px rgba(182,130,46,0.16); }
+  .fgroup:nth-child(4) .note { background: var(--signal); box-shadow: 0 0 0 4px rgba(255,210,30,0.18); }
+  .fgroup__label { font-size: 1.3rem; margin-bottom: 0.3rem; }
+  .fgroup__sub { font-size: 0.92rem; }
+  @media (max-width: 720px) {
+    .formation { grid-template-columns: 1fr; gap: 0; }
+    .formation__line { left: 50%; right: auto; top: 0; bottom: 0; width: 2px; height: auto; background: repeating-linear-gradient(to bottom, var(--messing-tief) 0 14px, transparent 14px 28px); }
+  }
+
+  /* MEMBERS PHOTOS */
+  .members-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 0.8rem; }
+  .members-grid img { width: 100%; height: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; border: 1px solid var(--line); }
+  .members-grid img:first-child { aspect-ratio: auto; }
+  @media (max-width: 760px) {
+    .members-grid { grid-template-columns: 1fr 1fr; }
+    .members-grid img:first-child { grid-column: span 2; aspect-ratio: 16/10; }
+  }
+
+  /* KONTAKT */
+  .kontakt-sec { background: linear-gradient(180deg, transparent, rgba(237,230,216,0.02)); }
+  .kontakt-sec .sec-head { max-width: 40ch; }
+  .contact { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+  .contact__list { list-style: none; display: flex; flex-direction: column; gap: 1.3rem; margin-bottom: 2rem; }
+  .contact__list li { display: flex; flex-direction: column; gap: 0.3rem; padding-bottom: 1.3rem; border-bottom: 1px solid var(--line); }
+  .contact__label { font-family: var(--font-sign); font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--dim); }
+  .contact__list a, .contact__plain { font-family: var(--font-body); font-size: 1.25rem; }
+  .contact__list a { color: var(--messing-hell); transition: color 0.3s var(--ease); }
+  .contact__list a:hover { color: var(--signal); }
+  .contact__note { font-size: 0.96rem; }
+  .contact__form { background: var(--nacht); border: 1px solid var(--line); border-radius: 4px; padding: clamp(1.6rem, 4vw, 2.6rem); }
+  .field { margin-bottom: 1.3rem; }
+  .field label { display: block; font-family: var(--font-sign); font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+  .field input, .field textarea { width: 100%; background: var(--nacht-2); border: 1px solid var(--line-strong); border-radius: 3px; padding: 0.85rem 1rem; color: var(--text); font-family: var(--font-body); font-size: 1rem; transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+  .field input::placeholder, .field textarea::placeholder { color: var(--dim); }
+  .field input:focus, .field textarea:focus { outline: none; border-color: var(--messing-hell); box-shadow: 0 0 0 3px rgba(231,184,92,0.16); }
+  .field textarea { resize: vertical; }
+  .contact__hint { font-size: 0.82rem; margin-top: 1rem; }
+  @media (max-width: 820px) { .contact { grid-template-columns: 1fr; } }
 </style>
+
+<script is:inline define:vars={{ email: SITE.email }}>
+  const form = document.getElementById('contact-form');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = data.get('name') || '';
+    const from = data.get('email') || '';
+    const anlass = data.get('anlass') || '';
+    const msg = data.get('nachricht') || '';
+    const subject = `Anfrage Brass.313${anlass ? ' — ' + anlass : ''}`;
+    const body = `Name: ${name}\nE-Mail: ${from}\nAnlass/Datum: ${anlass}\n\n${msg}`;
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>

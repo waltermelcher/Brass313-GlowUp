@@ -1,11 +1,5 @@
 ---
 import { NAV, url, asset } from '../consts';
-const current = Astro.url.pathname.replace(/\/$/, '');
-const home = url('').replace(/\/$/, '');
-const isActive = (href: string) => {
-  const h = href.replace(/\/$/, '');
-  return h === current || (h !== home && current.startsWith(h));
-};
 ---
 
 <header id="site-header" class="header">
@@ -17,17 +11,14 @@ const isActive = (href: string) => {
 
     <nav class="nav" aria-label="Hauptnavigation">
       {NAV.map((item, i) => (
-        <a
-          href={item.href}
-          class:list={['nav__link', { 'nav__link--active': isActive(item.href) }]}
-        >
-          <span class="nav__num">{String(i).padStart(2, '0')}</span>
+        <a href={item.href} class="nav__link" data-spy={item.id}>
+          <span class="nav__num">{String(i + 1).padStart(2, '0')}</span>
           {item.label}
         </a>
       ))}
     </nav>
 
-    <a class="btn btn-primary header__cta" href={url('kontakt')}>Buchen</a>
+    <a class="btn btn-primary header__cta" href={`${url('')}#kontakt`}>Buchen</a>
 
     <button id="nav-toggle" class="burger" aria-label="Menü öffnen" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -38,10 +29,10 @@ const isActive = (href: string) => {
     <nav class="mobile-menu__nav">
       {NAV.map((item, i) => (
         <a href={item.href} class="mobile-menu__link">
-          <span>{String(i).padStart(2, '0')}</span>{item.label}
+          <span>{String(i + 1).padStart(2, '0')}</span>{item.label}
         </a>
       ))}
-      <a class="btn btn-primary" href={url('kontakt')} style="margin-top:1.2rem">Buchungsanfrage</a>
+      <a class="btn btn-primary" href={`${url('')}#kontakt`} style="margin-top:1.2rem">Buchungsanfrage</a>
     </nav>
   </div>
 </header>
@@ -67,7 +58,6 @@ const isActive = (href: string) => {
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    /* clear the route rail on the left */
     padding-left: clamp(2.4rem, 6vw, 4.5rem);
   }
   .brand { display: inline-flex; align-items: center; gap: 0.6rem; }
@@ -81,12 +71,12 @@ const isActive = (href: string) => {
   }
   .brand__dot { color: var(--signal); }
 
-  .nav { display: flex; align-items: center; gap: 1.9rem; }
+  .nav { display: flex; align-items: center; gap: 1.7rem; }
   .nav__link {
     position: relative;
     font-family: var(--font-sign);
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--muted);
@@ -114,17 +104,7 @@ const isActive = (href: string) => {
 
   .header__cta { padding: 0.55rem 1.25rem; font-size: 0.82rem; }
 
-  .burger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 44px;
-    height: 44px;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-  }
+  .burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; background: transparent; border: 0; cursor: pointer; }
   .burger span { display: block; height: 2px; width: 26px; background: var(--text); border-radius: 2px; transition: transform 0.35s var(--ease), opacity 0.3s var(--ease); }
   .burger[aria-expanded='true'] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .burger[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
@@ -146,7 +126,7 @@ const isActive = (href: string) => {
     font-family: var(--font-sign);
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     letter-spacing: 0.04em;
     padding: 0.7rem 0;
     border-bottom: 1px solid var(--line);
@@ -156,7 +136,7 @@ const isActive = (href: string) => {
   }
   .mobile-menu__link span { font-size: 0.7rem; color: var(--messing-tief); }
 
-  @media (max-width: 920px) {
+  @media (max-width: 960px) {
     .nav, .header__cta { display: none; }
     .burger { display: flex; }
   }
@@ -168,6 +148,7 @@ const isActive = (href: string) => {
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
+  // mobile menu
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('mobile-menu');
   toggle?.addEventListener('click', () => {
@@ -183,4 +164,24 @@ const isActive = (href: string) => {
       document.body.style.overflow = '';
     })
   );
+
+  // scroll-spy: highlight the nav link for the section in view (one-pager only)
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav__link[data-spy]'));
+  const sections = links
+    .map((l) => document.getElementById(l.dataset.spy ?? ''))
+    .filter((s): s is HTMLElement => !!s);
+  if (sections.length) {
+    const spy = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const id = e.target.id;
+            links.forEach((l) => l.classList.toggle('nav__link--active', l.dataset.spy === id));
+          }
+        });
+      },
+      { rootMargin: '-50% 0px -50% 0px' }
+    );
+    sections.forEach((s) => spy.observe(s));
+  }
 </script>

@@ -22,14 +22,16 @@ export const SITE = {
     'Sieben Musiker, eine Leidenschaft: Brass.313 verbindet traditionelle Blasmusik mit modernen Pop-Arrangements zu einem einzigartigen Klangerlebnis.',
 };
 
-export type NavItem = { label: string; href: string };
+export type NavItem = { label: string; href: string; id: string };
 
+// One-pager: nav points at in-page anchors. Absolute (base) hrefs so the links
+// also work from the separate Impressum page (jump back to home + section).
 export const NAV: NavItem[] = [
-  { label: 'Brass.313', href: url('') },
-  { label: 'Auftritte', href: url('auftritte') },
-  { label: 'Termine', href: url('termine') },
-  { label: 'Musiker', href: url('musiker') },
-  { label: 'Kontakt', href: url('kontakt') },
+  { label: 'Wer wir sind', href: `${url('')}#band`, id: 'band' },
+  { label: 'Auftritte', href: `${url('')}#auftritte`, id: 'auftritte' },
+  { label: 'Termine', href: `${url('')}#termine`, id: 'termine' },
+  { label: 'Musiker', href: `${url('')}#musiker`, id: 'musiker' },
+  { label: 'Kontakt', href: `${url('')}#kontakt`, id: 'kontakt' },
 ];
 
 export type Musician = { name: string };

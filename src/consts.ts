@@ -13,6 +13,17 @@ export const url = (path = ''): string => {
 /** Build a URL to a file in /public (images, etc.). */
 export const asset = (path: string): string => url(path);
 
+// Hosts on which the site is a staging/preview deployment and must NOT be indexed
+// by search engines. Matched against location.hostname at runtime (exact host or any
+// subdomain of these). Everything else — i.e. the real production domain — is indexed
+// automatically, no manual switch needed. Add patterns here if you use other previews.
+export const STAGING_HOST_PATTERNS: string[] = [
+  'github.io', // GitHub Pages preview, e.g. waltermelcher.github.io
+  'pages.dev', // Cloudflare Pages previews
+  'netlify.app', // Netlify previews
+  'vercel.app', // Vercel previews
+];
+
 export const SITE = {
   name: 'Brass.313',
   claim: "Blasmusik aus'm Ländle",

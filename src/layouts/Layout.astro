@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE, asset } from '../consts';
+import { SITE, asset, STAGING_HOST_PATTERNS } from '../consts';
 
 interface Props {
   title?: string;
@@ -17,6 +17,27 @@ const fullTitle = title ? `${title} · ${SITE.name}` : `${SITE.name} — ${SITE.
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {/* Auto-noindex on staging/preview hosts; production domain stays indexable — no manual switch. */}
+    <script is:inline define:vars={{ patterns: STAGING_HOST_PATTERNS }}>
+      (function () {
+        var h = (location.hostname || '').toLowerCase();
+        var isStaging =
+          !h ||
+          h === 'localhost' ||
+          h === '127.0.0.1' ||
+          patterns.some(function (p) {
+            return h === p || h.endsWith('.' + p);
+          });
+        if (isStaging) {
+          var m = document.createElement('meta');
+          m.name = 'robots';
+          m.content = 'noindex, nofollow';
+          document.head.appendChild(m);
+        }
+      })();
+    </script>
+
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/png" href={asset('images/logo.png')} />

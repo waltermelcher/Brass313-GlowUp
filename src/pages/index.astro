@@ -118,16 +118,22 @@ const groups = [
   </section>
 
   <!-- ============ Musiker ============ -->
-  <section id="musiker" class="band-strip">
-    <div class="band-strip__media">
-      <img src={asset('images/band-08.jpg')} alt="Brass.313 Ensemble" loading="lazy" />
-      <div class="band-strip__overlay"></div>
-    </div>
-    <div class="container band-strip__content">
-      <span class="km" data-reveal><span class="km__dot"></span>Die Besetzung</span>
-      <h2 class="section-title" data-reveal>Die Köpfe<br />hinter Brass.313</h2>
-      <ul class="band-names" data-reveal style="--reveal-delay:.1s">
-        {MUSICIANS.map((m) => <li>{m.name}</li>)}
+  <section id="musiker" class="section-pad musiker-sec">
+    <div class="container">
+      <div class="sec-head" data-reveal>
+        <span class="km"><span class="km__dot"></span>Die Besetzung</span>
+        <h2 class="section-title">Die Köpfe hinter Brass.313</h2>
+        <p class="lead" style="margin-top:0.8rem">Sieben Musiker, ein Sound.</p>
+      </div>
+      <ul class="members">
+        {MUSICIANS.map((m, i) => (
+          <li class="member" data-reveal style={`--reveal-delay:${(i % 4) * 0.06}s`}>
+            <div class="member__photo">
+              <img src={asset(m.image)} alt={m.name} loading="lazy" />
+            </div>
+            <h3 class="member__name">{m.name}</h3>
+          </li>
+        ))}
       </ul>
     </div>
   </section>
@@ -157,12 +163,6 @@ const groups = [
             <p class="fgroup__sub muted">{g.sub}</p>
           </div>
         ))}
-      </div>
-
-      <div class="members-grid" data-reveal style="margin-top:2.4rem">
-        <img src={asset('images/band-01.jpg')} alt="Brass.313" loading="lazy" />
-        <img src={asset('images/band-06.jpg')} alt="Brass.313" loading="lazy" />
-        <img src={asset('images/gig-02.jpg')} alt="Brass.313" loading="lazy" />
       </div>
     </div>
   </section>
@@ -289,16 +289,27 @@ const groups = [
     .gig__meta { grid-column: 2; text-align: left; }
   }
 
-  /* BAND STRIP */
-  .band-strip { position: relative; padding-block: clamp(5.5rem, 13vw, 10rem); overflow: hidden; }
-  .band-strip__media { position: absolute; inset: 0; z-index: -1; }
-  .band-strip__media img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
-  .band-strip__overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(22,19,15,0.96) 0%, rgba(22,19,15,0.78) 48%, rgba(22,19,15,0.42) 100%); }
-  .band-strip__content { max-width: 640px; }
-  .band-strip__content .section-title { margin: 0.7rem 0 0; }
-  .band-names { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem 1.3rem; margin: 1.6rem 0 0; }
-  .band-names li { font-family: var(--font-body); font-size: clamp(1.1rem, 2.4vw, 1.55rem); position: relative; padding-right: 1.3rem; }
-  .band-names li:not(:last-child)::after { content: '·'; position: absolute; right: 0; color: var(--messing); }
+  /* MUSIKER (Foto-Karten) */
+  .musiker-sec { background: linear-gradient(180deg, transparent, rgba(237,230,216,0.02)); }
+  .members { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+  .member__photo {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    background: var(--nacht-2);
+  }
+  .member__photo img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 25%;
+    filter: grayscale(0.25) brightness(0.92);
+    transition: transform 0.5s var(--ease), filter 0.5s var(--ease);
+  }
+  .member:hover .member__photo img { transform: scale(1.04); filter: none; }
+  .member__name { font-family: var(--font-body); font-weight: 500; font-size: 1.25rem; text-transform: none; letter-spacing: 0; margin-top: 0.9rem; }
+  @media (max-width: 900px) { .members { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 560px) { .members { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
 
   /* FORMATION */
   .formation { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; padding: 2.5rem 0; }
@@ -313,15 +324,6 @@ const groups = [
   @media (max-width: 720px) {
     .formation { grid-template-columns: 1fr; gap: 0; }
     .formation__line { left: 50%; right: auto; top: 0; bottom: 0; width: 1px; height: auto; background: linear-gradient(180deg, transparent, var(--messing-tief) 12%, var(--messing-tief) 88%, transparent); }
-  }
-
-  /* MEMBERS PHOTOS */
-  .members-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 0.8rem; }
-  .members-grid img { width: 100%; height: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; border: 1px solid var(--line); }
-  .members-grid img:first-child { aspect-ratio: auto; }
-  @media (max-width: 760px) {
-    .members-grid { grid-template-columns: 1fr 1fr; }
-    .members-grid img:first-child { grid-column: span 2; aspect-ratio: 16/10; }
   }
 
   /* KONTAKT */

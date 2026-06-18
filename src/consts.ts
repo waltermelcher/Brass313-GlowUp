@@ -34,18 +34,19 @@ export const NAV: NavItem[] = [
   { label: 'Kontakt', href: `${url('')}#kontakt`, id: 'kontakt' },
 ];
 
-export type Musician = { name: string };
+export type Musician = { name: string; image: string };
 
 // Original site lists the seven members by name (instruments are not individually
 // specified — only the overall formation: 3 hohe Bläser, 1 Schlagzeuger, 3 tiefe Bläser).
+// `image` = placeholder band/performance photos. Swap in real portraits here per person.
 export const MUSICIANS: Musician[] = [
-  { name: 'Bálint Takács' },
-  { name: 'Simon Harder' },
-  { name: 'Christian Geltner' },
-  { name: 'Marcel Jäger' },
-  { name: 'Christoph Kolb' },
-  { name: 'Lucas Class' },
-  { name: 'Sascha Schröter' },
+  { name: 'Bálint Takács', image: 'images/band-01.jpg' },
+  { name: 'Simon Harder', image: 'images/band-07.jpg' },
+  { name: 'Christian Geltner', image: 'images/gig-02.jpg' },
+  { name: 'Marcel Jäger', image: 'images/gig-04.jpeg' },
+  { name: 'Christoph Kolb', image: 'images/band-02.jpeg' },
+  { name: 'Lucas Class', image: 'images/band-06.jpg' },
+  { name: 'Sascha Schröter', image: 'images/band-08.jpg' },
 ];
 
 export type Gig = {

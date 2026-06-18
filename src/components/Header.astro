@@ -10,9 +10,8 @@ import { NAV, url, asset } from '../consts';
     </a>
 
     <nav class="nav" aria-label="Hauptnavigation">
-      {NAV.map((item, i) => (
+      {NAV.map((item) => (
         <a href={item.href} class="nav__link" data-spy={item.id}>
-          <span class="nav__num">{String(i + 1).padStart(2, '0')}</span>
           {item.label}
         </a>
       ))}
@@ -27,10 +26,8 @@ import { NAV, url, asset } from '../consts';
 
   <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
     <nav class="mobile-menu__nav">
-      {NAV.map((item, i) => (
-        <a href={item.href} class="mobile-menu__link">
-          <span>{String(i + 1).padStart(2, '0')}</span>{item.label}
-        </a>
+      {NAV.map((item) => (
+        <a href={item.href} class="mobile-menu__link">{item.label}</a>
       ))}
       <a class="btn btn-primary" href={`${url('')}#kontakt`} style="margin-top:1.2rem">Buchungsanfrage</a>
     </nav>
@@ -79,13 +76,9 @@ import { NAV, url, asset } from '../consts';
     letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--muted);
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.4rem;
     padding: 0.3rem 0;
     transition: color 0.3s var(--ease);
   }
-  .nav__num { font-size: 0.62rem; color: var(--messing-tief); }
   .nav__link::after {
     content: '';
     position: absolute;
@@ -131,11 +124,7 @@ import { NAV, url, asset } from '../consts';
     letter-spacing: 0.04em;
     padding: 0.7rem 0;
     border-bottom: 1px solid var(--line);
-    display: flex;
-    align-items: baseline;
-    gap: 0.9rem;
   }
-  .mobile-menu__link span { font-size: 0.7rem; color: var(--messing-tief); }
 
   @media (max-width: 960px) {
     .nav, .header__cta { display: none; }

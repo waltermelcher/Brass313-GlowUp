@@ -1,5 +1,6 @@
 ---
-import { NAV, SITE, url, asset } from '../consts';
+import { NAV, SITE, url } from '../consts';
+import Sign313 from './Sign313.astro';
 const year = 2026;
 ---
 
@@ -7,19 +8,15 @@ const year = 2026;
   <div class="divider"></div>
   <div class="container footer__inner">
     <div class="footer__brand">
-      <a href={url('')} class="footer__logo">
-        <img src={asset('images/logo.png')} alt="Brass.313 Logo" width="56" height="58" />
-      </a>
+      <Sign313 size="md" />
       <p class="footer__claim">{SITE.claim}</p>
-      <p class="footer__desc">{SITE.description}</p>
+      <p class="footer__desc muted">{SITE.description}</p>
     </div>
 
     <div class="footer__col">
-      <h4 class="footer__head">Navigation</h4>
+      <h4 class="footer__head">Die Strecke</h4>
       <ul>
-        {NAV.map((item) => (
-          <li><a href={item.href}>{item.label}</a></li>
-        ))}
+        {NAV.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
       </ul>
     </div>
 
@@ -27,7 +24,7 @@ const year = 2026;
       <h4 class="footer__head">Kontakt</h4>
       <ul>
         <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
-        <li><a href={SITE.instagram} target="_blank" rel="noopener">Folge uns auf Instagram</a></li>
+        <li><a href={SITE.instagram} target="_blank" rel="noopener">Instagram · @brass.313</a></li>
         <li><a href={url('impressum-datenschutz')}>Impressum &amp; Datenschutz</a></li>
       </ul>
     </div>
@@ -43,37 +40,35 @@ const year = 2026;
 </footer>
 
 <style>
-  .footer { padding-top: 3.5rem; }
+  .footer { padding-top: 3rem; }
   .footer__inner {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr;
+    grid-template-columns: 1.7fr 1fr 1fr;
     gap: 3rem;
     padding-block: 3.5rem;
+    padding-left: clamp(2.4rem, 6vw, 4.5rem);
   }
-  .footer__logo img { height: 54px; width: auto; margin-bottom: 1.2rem; }
   .footer__claim {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
+    font-style: italic;
     font-size: 1.4rem;
-    color: var(--gold);
-    margin-bottom: 0.8rem;
+    color: var(--messing-hell);
+    margin: 1.2rem 0 0.7rem;
   }
-  .footer__desc { color: var(--text-muted); max-width: 42ch; font-size: 0.96rem; }
+  .footer__desc { max-width: 42ch; font-size: 0.98rem; }
 
   .footer__head {
-    font-family: var(--font-body);
-    font-size: 0.78rem;
+    font-family: var(--font-sign);
+    font-weight: 600;
+    font-size: 0.74rem;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--dim);
     margin-bottom: 1.2rem;
   }
   .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-  .footer__col a {
-    color: var(--text-muted);
-    transition: color 0.3s var(--ease);
-    font-size: 0.96rem;
-  }
-  .footer__col a:hover { color: var(--gold); }
+  .footer__col a { color: var(--muted); transition: color 0.3s var(--ease); font-size: 1rem; }
+  .footer__col a:hover { color: var(--messing-hell); }
 
   .footer__bottom {
     display: flex;
@@ -81,15 +76,17 @@ const year = 2026;
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
-    padding-block: 1.8rem 2.5rem;
+    padding-block: 1.6rem 2.4rem;
+    padding-left: clamp(2.4rem, 6vw, 4.5rem);
     border-top: 1px solid var(--line);
-    color: var(--text-dim);
-    font-size: 0.85rem;
+    color: var(--dim);
+    font-size: 0.86rem;
+    font-family: var(--font-sign);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
-  .footer__legal { display: flex; gap: 1.5rem; }
-  .footer__legal a:hover { color: var(--gold); }
+  .footer__legal { display: flex; gap: 1.4rem; }
+  .footer__legal a:hover { color: var(--messing-hell); }
 
-  @media (max-width: 760px) {
-    .footer__inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  }
+  @media (max-width: 760px) { .footer__inner { grid-template-columns: 1fr; gap: 2.4rem; } }
 </style>

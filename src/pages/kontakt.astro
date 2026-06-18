@@ -6,15 +6,15 @@ import { SITE } from '../consts';
 
 <Layout title="Kontakt" description="Kontaktiert Brass.313 für Anfragen, Abstimmungen und Buchungen.">
   <PageHero
-    eyebrow="Kontakt"
+    km="K"
+    label="Endstation"
     title="Schreibt uns"
     text="Kontaktiert uns für Anfragen, Abstimmungen und weitere Informationen — wir freuen uns auf eure Nachricht."
     image="images/band-06.jpg"
   />
 
-  <section class="section-pad">
-    <div class="container contact">
-      <!-- Info -->
+  <section class="section-pad" data-km="K1" data-label="Kontakt">
+    <div class="container lane contact">
       <aside class="contact__info" data-reveal>
         <h2 class="contact__head">Direkt erreichen</h2>
         <ul class="contact__list">
@@ -28,16 +28,15 @@ import { SITE } from '../consts';
           </li>
           <li>
             <span class="contact__label">Region</span>
-            <span>Württemberg · entlang der B313</span>
+            <span class="contact__plain">Württemberg · entlang der B313</span>
           </li>
         </ul>
-        <p class="contact__note">
+        <p class="contact__note muted">
           Für Buchungsanfragen nennt uns gern Datum, Ort, Anlass und die gewünschte Auftrittsform —
           so können wir euch direkt ein passendes Angebot machen.
         </p>
       </aside>
 
-      <!-- Form -->
       <form class="contact__form" id="contact-form" data-reveal style="--reveal-delay:.1s">
         <div class="field">
           <label for="name">Name</label>
@@ -55,63 +54,42 @@ import { SITE } from '../consts';
           <label for="nachricht">Nachricht</label>
           <textarea id="nachricht" name="nachricht" rows="5" required placeholder="Erzählt uns von eurem Anlass …"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Nachricht senden</button>
-        <p class="contact__hint">Öffnet euer E-Mail-Programm mit vorausgefüllter Nachricht.</p>
+        <button type="submit" class="btn btn-primary">Nachricht senden <span class="arr">→</span></button>
+        <p class="contact__hint muted">Öffnet euer E-Mail-Programm mit vorausgefüllter Nachricht.</p>
       </form>
     </div>
   </section>
 </Layout>
 
 <style>
-  .contact {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: clamp(2rem, 6vw, 5rem);
-    align-items: start;
-  }
+  .contact { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
   .contact__head { font-size: 1.8rem; margin-bottom: 1.8rem; }
-  .contact__list { list-style: none; display: flex; flex-direction: column; gap: 1.4rem; margin-bottom: 2rem; }
-  .contact__list li { display: flex; flex-direction: column; gap: 0.25rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--line); }
-  .contact__label { font-size: 0.74rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-dim); }
-  .contact__list a, .contact__list span:not(.contact__label) { font-size: 1.2rem; font-family: var(--font-display); }
-  .contact__list a { color: var(--gold); transition: color 0.3s var(--ease); }
-  .contact__list a:hover { color: var(--gold-bright); }
-  .contact__note { color: var(--text-muted); font-size: 0.96rem; }
+  .contact__list { list-style: none; display: flex; flex-direction: column; gap: 1.3rem; margin-bottom: 2rem; }
+  .contact__list li { display: flex; flex-direction: column; gap: 0.3rem; padding-bottom: 1.3rem; border-bottom: 1px solid var(--line); }
+  .contact__label { font-family: var(--font-sign); font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--dim); }
+  .contact__list a, .contact__plain { font-family: var(--font-body); font-size: 1.25rem; }
+  .contact__list a { color: var(--messing-hell); transition: color 0.3s var(--ease); }
+  .contact__list a:hover { color: var(--signal); }
+  .contact__note { font-size: 0.96rem; }
 
-  .contact__form {
-    background: var(--bg-elev);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: clamp(1.6rem, 4vw, 2.6rem);
-  }
+  .contact__form { background: var(--nacht-2); border: 1px solid var(--line); border-radius: 4px; padding: clamp(1.6rem, 4vw, 2.6rem); }
   .field { margin-bottom: 1.3rem; }
-  .field label {
-    display: block;
-    font-size: 0.78rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 0.5rem;
-  }
+  .field label { display: block; font-family: var(--font-sign); font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
   .field input, .field textarea {
     width: 100%;
-    background: var(--bg);
+    background: var(--nacht);
     border: 1px solid var(--line-strong);
-    border-radius: 10px;
+    border-radius: 3px;
     padding: 0.85rem 1rem;
     color: var(--text);
     font-family: var(--font-body);
     font-size: 1rem;
     transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
   }
-  .field input::placeholder, .field textarea::placeholder { color: var(--text-dim); }
-  .field input:focus, .field textarea:focus {
-    outline: none;
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201,162,75,0.18);
-  }
+  .field input::placeholder, .field textarea::placeholder { color: var(--dim); }
+  .field input:focus, .field textarea:focus { outline: none; border-color: var(--messing-hell); box-shadow: 0 0 0 3px rgba(231,184,92,0.16); }
   .field textarea { resize: vertical; }
-  .contact__hint { font-size: 0.82rem; color: var(--text-dim); margin-top: 1rem; }
+  .contact__hint { font-size: 0.82rem; margin-top: 1rem; }
 
   @media (max-width: 820px) { .contact { grid-template-columns: 1fr; } }
 </style>
@@ -126,9 +104,7 @@ import { SITE } from '../consts';
     const anlass = data.get('anlass') || '';
     const msg = data.get('nachricht') || '';
     const subject = `Anfrage Brass.313${anlass ? ' — ' + anlass : ''}`;
-    const body =
-      `Name: ${name}\nE-Mail: ${from}\nAnlass/Datum: ${anlass}\n\n${msg}`;
-    window.location.href =
-      `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const body = `Name: ${name}\nE-Mail: ${from}\nAnlass/Datum: ${anlass}\n\n${msg}`;
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 </script>

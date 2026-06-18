@@ -1,38 +1,43 @@
 /* ============================================================
-   Brass.313 — Glow Up · Design System
-   Cinematic Dark · Messing/Gold · dezente Animationen
+   Brass.313 — Glow Up · "Route B313"
+   Eine Route durch die Blasmusik. Straße trifft Notenlinie.
+   Signage (Oswald) trifft Tradition (Spectral).
    ============================================================ */
 
 :root {
-  /* base */
-  --bg: #0a0a0c;
-  --bg-elev: #111114;
-  --bg-elev-2: #16161a;
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.16);
+  /* --- surface: warm espresso, kein reines Schwarz (Instrumentenkoffer-Leder) --- */
+  --nacht: #16130f;
+  --nacht-2: #1d1813;
+  --asphalt: #241e17;
 
-  /* text */
-  --text: #f4f1ea;
-  --text-muted: #a7a299;
-  --text-dim: #6f6b64;
+  /* --- lacquered brass --- */
+  --messing: #b6822e;
+  --messing-hell: #e7b85c;
+  --messing-tief: #87601f;
+  --messing-glow: rgba(231, 184, 92, 0.32);
 
-  /* gold accent */
-  --gold: #c9a24b;
-  --gold-bright: #e8c879;
-  --gold-deep: #9c7a2f;
-  --gold-glow: rgba(201, 162, 75, 0.35);
+  /* --- reserviert: Bundesstraßen-Schild-Gelb (nur Schild + Routen-Marker) --- */
+  --signal: #ffd21e;
 
-  /* type */
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* --- linen / text --- */
+  --leinen: #ede6d8;
+  --text: #f1e8da;
+  --muted: #a8997f;
+  --dim: #6e6450;
 
-  /* layout */
-  --maxw: 1200px;
-  --gutter: clamp(1.25rem, 4vw, 3rem);
-  --radius: 14px;
-  --header-h: 76px;
+  --line: rgba(237, 230, 216, 0.12);
+  --line-strong: rgba(237, 230, 216, 0.24);
 
-  /* motion */
+  /* --- type --- */
+  --font-sign: 'Oswald', 'Arial Narrow', system-ui, sans-serif;
+  --font-body: 'Spectral', Georgia, 'Times New Roman', serif;
+
+  /* --- layout --- */
+  --maxw: 1180px;
+  --gutter: clamp(1.25rem, 4.5vw, 3.5rem);
+  --rail-w: clamp(2.6rem, 7vw, 5rem); /* Breite der Routen-Spalte links */
+  --header-h: 72px;
+
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -40,86 +45,90 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-h);
+  scroll-padding-top: calc(var(--header-h) + 1rem);
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--bg);
+  background: var(--nacht);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 1.72;
   font-weight: 400;
-  letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
-/* subtle vignette / grain backdrop */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(1200px 700px at 80% -10%, rgba(201, 162, 75, 0.10), transparent 60%),
-    radial-gradient(900px 600px at -10% 110%, rgba(201, 162, 75, 0.06), transparent 55%),
-    var(--bg);
+    radial-gradient(1100px 640px at 88% -8%, rgba(182, 130, 46, 0.12), transparent 60%),
+    radial-gradient(820px 560px at -8% 108%, rgba(182, 130, 46, 0.07), transparent 55%),
+    var(--nacht);
 }
 
 img { max-width: 100%; display: block; }
-
 a { color: inherit; text-decoration: none; }
-
-::selection { background: var(--gold); color: #1a1407; }
+::selection { background: var(--signal); color: var(--nacht); }
 
 /* ---------- typography ---------- */
-h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: -0.015em;
+.display,
+h1, h2, h3 {
+  font-family: var(--font-sign);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
 }
 
 .display {
-  font-size: clamp(3rem, 11vw, 8.5rem);
-  font-weight: 600;
-  line-height: 0.92;
+  font-size: clamp(3.2rem, 13vw, 9.5rem);
+  letter-spacing: -0.01em;
+}
+.display .dot { color: var(--signal); }
+
+.section-title {
+  font-size: clamp(2rem, 5.5vw, 3.6rem);
 }
 
-.eyebrow {
+/* serif lead/body keeps the "traditional" voice */
+.lead {
   font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--gold);
+  font-size: clamp(1.12rem, 2vw, 1.4rem);
+  line-height: 1.62;
+  color: var(--leinen);
+  max-width: 58ch;
+  font-weight: 400;
+}
+p { max-width: 64ch; }
+.muted { color: var(--muted); }
+.brass-text { color: var(--messing-hell); }
+
+/* km marker / eyebrow — the route's signposts (Oswald) */
+.km {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
+  font-family: var(--font-sign);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--messing-hell);
 }
-.eyebrow::before {
-  content: '';
-  width: 34px;
-  height: 1px;
-  background: linear-gradient(90deg, var(--gold), transparent);
+.km__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--messing-hell);
+  box-shadow: 0 0 0 4px rgba(231, 184, 92, 0.14);
+  flex: none;
 }
-
-.section-title {
-  font-size: clamp(2rem, 5vw, 3.4rem);
-  margin-top: 0.6rem;
-}
-
-.lead {
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 56ch;
-}
-
-.gold-text { color: var(--gold); }
 
 /* ---------- layout ---------- */
 .container {
@@ -128,66 +137,52 @@ h1, h2, h3, h4 {
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
-
-section { position: relative; }
-
-.section-pad { padding-block: clamp(4.5rem, 10vw, 8.5rem); }
-
-.divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
-}
+.section-pad { padding-block: clamp(4rem, 9vw, 7.5rem); }
+/* content lives in its lane, just right of the route line */
+.lane { padding-left: clamp(2.4rem, 6vw, 4.5rem); }
+.divider { height: 1px; background: linear-gradient(90deg, transparent, var(--line-strong), transparent); }
 
 /* ---------- buttons ---------- */
 .btn {
-  --pad-y: 0.95rem;
-  --pad-x: 1.7rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: var(--pad-y) var(--pad-x);
-  font-family: var(--font-body);
+  gap: 0.55rem;
+  padding: 0.9rem 1.6rem;
+  font-family: var(--font-sign);
   font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
-  border-radius: 100px;
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 3px;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform 0.4s var(--ease), background 0.4s var(--ease),
-    border-color 0.4s var(--ease), box-shadow 0.4s var(--ease), color 0.4s var(--ease);
-  will-change: transform;
+  transition: transform 0.35s var(--ease), background 0.35s var(--ease),
+    border-color 0.35s var(--ease), color 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 .btn:hover { transform: translateY(-2px); }
-
 .btn-primary {
-  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
-  color: #1a1407;
-  box-shadow: 0 8px 30px -10px var(--gold-glow);
+  background: linear-gradient(135deg, var(--messing-hell), var(--messing));
+  color: var(--nacht);
+  box-shadow: 0 10px 30px -12px var(--messing-glow);
 }
-.btn-primary:hover {
-  box-shadow: 0 14px 40px -10px var(--gold-glow);
-}
-
+.btn-primary:hover { box-shadow: 0 16px 40px -12px var(--messing-glow); }
 .btn-ghost {
   border-color: var(--line-strong);
   color: var(--text);
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(6px);
 }
-.btn-ghost:hover { border-color: var(--gold); color: var(--gold-bright); }
+.btn-ghost:hover { border-color: var(--messing-hell); color: var(--messing-hell); }
 
-/* ---------- reveal animation ---------- */
+/* arrow that nods to a road sign */
+.btn .arr { font-family: var(--font-sign); }
+
+/* ---------- reveal ---------- */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  transform: translateY(24px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
   transition-delay: var(--reveal-delay, 0s);
 }
-[data-reveal].in-view {
-  opacity: 1;
-  transform: none;
-}
+[data-reveal].in-view { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -195,7 +190,6 @@ section { position: relative; }
   .btn:hover { transform: none; }
 }
 
-/* ---------- utility ---------- */
 .center { text-align: center; }
 .mx-auto { margin-inline: auto; }
 .stack > * + * { margin-top: 1.1rem; }

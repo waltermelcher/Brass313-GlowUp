@@ -11,11 +11,16 @@ Brass.313 ist ein 7-köpfiges Blasmusik-Ensemble aus Württemberg (entlang der B
 traditionelle Blasmusik mit modernen Pop-Arrangements verbindet.
 
 Dieses Repo ist eine neu gestaltete Version der bestehenden Seite. **Struktur, Texte, Bilder
-und Navigation** wurden übernommen; das Design wurde deutlich aufgewertet:
+und Navigation** wurden übernommen; das Design folgt dem Konzept **„Route B313"** — gegründet
+in der DNA der Band (Bundesstraße B313):
 
-- **Look:** Cinematic Dark mit Messing-/Gold-Akzent
-- **Typografie:** Fraunces (Display-Serif) + Inter (Body)
-- **Animationen:** dezente Scroll-Reveals & Hover-Effekte (respektiert `prefers-reduced-motion`)
+- **Signature:** eine durchgehende Routen-/Notenlinie mit Scroll-Marker (die „Fahrt" über die
+  B313) — eine Straßenlinie, die zugleich Notenlinie ist
+- **Motiv:** die `313` als echtes gelbes Bundesstraßen-Schild; Termine als Stationen entlang der
+  Route; Musiker mit `3·1·3`-Notenformation
+- **Typografie:** Oswald (Signage/DIN-artig, Moderne) + Spectral (warme Serif, Tradition)
+- **Palette:** warmes Espresso, lackiertes Messing, reserviertes Bundesstraßen-Signalgelb
+- **Animationen:** dezente Scroll-Reveals & der Routen-Marker (respektiert `prefers-reduced-motion`)
 - **Technik:** Astro 5, statische Generierung, responsive, SEO-/OpenGraph-Tags, Sitemap
 
 > Die Rechtsseite (Impressum & Datenschutz) enthält **Platzhalter-/Dummytexte** und muss vor

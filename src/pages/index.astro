@@ -101,7 +101,7 @@ const groups = [
   <section id="termine" class="section-pad">
     <div class="container">
       <div class="sec-head" data-reveal>
-        <span class="km"><span class="km__dot"></span>Termine 2026</span>
+        <span class="km"><span class="km__dot"></span>Termine</span>
         <h2 class="section-title">Wo ihr uns hört</h2>
         <p class="lead" style="margin-top:0.8rem">Kommt vorbei und erlebt Brass.313 live.</p>
       </div>
@@ -119,14 +119,12 @@ const groups = [
               <p class="gig__loc muted">{g.location}</p>
             </div>
             <div class="gig__meta">
-              {i === 0 && <span class="gig__next">Nächster Termin</span>}
               <span class="gig__time">{g.time}</span>
               <span class="gig__note">{g.note}</span>
             </div>
           </li>
         ))}
       </ul>
-      <p class="gig-note muted" data-reveal>Alle Angaben ohne Gewähr — Änderungen vorbehalten.</p>
     </div>
   </section>
 
@@ -278,10 +276,8 @@ const groups = [
   .gig__year { font-family: var(--font-sign); font-size: 0.66rem; letter-spacing: 0.18em; color: var(--dim); }
   .gig__title { font-size: clamp(1.4rem, 3vw, 2rem); }
   .gig__meta { text-align: right; font-family: var(--font-sign); }
-  .gig__next { display: block; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--signal); margin-bottom: 0.3rem; }
   .gig__time { display: block; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.04em; }
   .gig__note { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-  .gig-note { margin-top: 1.2rem; font-size: 0.86rem; }
   /* VIDEO */
   .video { margin-top: clamp(2.5rem, 5vw, 4rem); }
   .video__frame {

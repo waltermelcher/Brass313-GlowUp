@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { MUSICIANS, url, asset } from '../consts';
+
+const formation = [
+  { num: '3', label: 'Hohe Bläser', desc: 'Trompeten & Flügelhörner für die Melodie' },
+  { num: '1', label: 'Schlagzeuger', desc: 'Das treibende Rückgrat der Band' },
+  { num: '3', label: 'Tiefe Bläser', desc: 'Posaunen & Tuba für das Fundament' },
+];
+---
+
+<Layout title="Musiker" description="Sieben Musiker, eine Leidenschaft — das Ensemble hinter Brass.313.">
+  <PageHero
+    eyebrow="Das Ensemble"
+    title="Sieben Musiker, ein Sound"
+    text="Hinter Brass.313 stehen sieben Freunde, die ihre Leidenschaft für handgemachte Blasmusik auf jede Bühne bringen."
+    image="images/band-03.jpg"
+  />
+
+  <!-- Formation -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="sec-head" data-reveal>
+        <span class="eyebrow">Die Formation</span>
+        <h2 class="section-title">Warum 313?</h2>
+        <p class="lead" style="margin-top:1rem">
+          Der Name verrät die Besetzung — und die Heimat: <span class="gold-text">3 hohe Bläser</span>,
+          <span class="gold-text">1 Schlagzeuger</span> und <span class="gold-text">3 tiefe Bläser</span>.
+          Die <span class="gold-text">313</span> steht zugleich für die Bundesstraße B313, die sich
+          durch unser Ländle zieht.
+        </p>
+      </div>
+
+      <div class="formation">
+        {formation.map((f, i) => (
+          <div class="formation__item" data-reveal style={`--reveal-delay:${i * 0.08}s`}>
+            <span class="formation__num">{f.num}</span>
+            <h3 class="formation__label">{f.label}</h3>
+            <p class="formation__desc">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Members -->
+  <section class="section-pad" style="padding-top:0">
+    <div class="container">
+      <div class="sec-head" data-reveal>
+        <span class="eyebrow">Die Band</span>
+        <h2 class="section-title">Das sind wir</h2>
+      </div>
+      <ul class="members">
+        {MUSICIANS.map((m, i) => (
+          <li class="member" data-reveal style={`--reveal-delay:${(i % 4) * 0.06}s`}>
+            <span class="member__index">{String(i + 1).padStart(2, '0')}</span>
+            <span class="member__name">{m.name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Photo band -->
+  <section class="members-photos">
+    <div class="container">
+      <div class="members-grid">
+        <img src={asset('images/band-01.jpg')} alt="Brass.313" loading="lazy" data-reveal />
+        <img src={asset('images/band-06.jpg')} alt="Brass.313" loading="lazy" data-reveal style="--reveal-delay:.06s" />
+        <img src={asset('images/gig-02.jpg')} alt="Brass.313" loading="lazy" data-reveal style="--reveal-delay:.12s" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container cta center mx-auto" data-reveal>
+      <h2 class="cta__title">Lust, uns live zu erleben?</h2>
+      <div class="hero__actions" style="justify-content:center;margin-top:1.5rem">
+        <a class="btn btn-primary" href={url('termine')}>Zu den Terminen</a>
+        <a class="btn btn-ghost" href={url('kontakt')}>Kontakt</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .formation { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 3rem; }
+  .formation__item {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+  }
+  .formation__item:hover { border-color: var(--gold-deep); transform: translateY(-5px); }
+  .formation__num {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    text-shadow: 0 0 40px var(--gold-glow);
+  }
+  .formation__label { font-size: 1.4rem; margin: 0.8rem 0 0.5rem; }
+  .formation__desc { color: var(--text-muted); font-size: 0.95rem; }
+  @media (max-width: 720px) { .formation { grid-template-columns: 1fr; } }
+
+  .members { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+  .member {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+    padding: 1.4rem 0.5rem;
+    border-bottom: 1px solid var(--line);
+    transition: padding-left 0.35s var(--ease), color 0.35s var(--ease);
+  }
+  .member:hover { padding-left: 1.2rem; }
+  .member:hover .member__name { color: var(--gold); }
+  .member__index { font-family: var(--font-display); color: var(--gold); font-size: 1rem; min-width: 2ch; }
+  .member__name { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem); transition: color 0.35s var(--ease); }
+  @media (max-width: 600px) { .members { grid-template-columns: 1fr; } }
+
+  .members-photos { padding-bottom: clamp(3rem, 8vw, 6rem); }
+  .members-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 1rem; }
+  .members-grid img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+  }
+  .members-grid img:first-child { aspect-ratio: auto; }
+  @media (max-width: 760px) { .members-grid { grid-template-columns: 1fr 1fr; } .members-grid img:first-child { grid-column: span 2; aspect-ratio: 16/10; } }
+
+  .cta { max-width: 700px; }
+  .cta__title { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+</style>

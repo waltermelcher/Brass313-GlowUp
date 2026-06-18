@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { GIGS, SITE, url } from '../consts';
+---
+
+<Layout title="Termine" description="Alle anstehenden Auftritte und Konzerte von Brass.313 in der Saison 2026.">
+  <PageHero
+    eyebrow="Termine 2026"
+    title="Wo ihr uns hört"
+    text="Kommt vorbei und erlebt Brass.313 live. Hier findet ihr alle anstehenden Auftritte der Saison."
+    image="images/gig-05.jpg"
+  />
+
+  <section class="section-pad">
+    <div class="container">
+      <ul class="gig-list">
+        {GIGS.map((g, i) => (
+          <li class="gig" data-reveal style={`--reveal-delay:${i * 0.06}s`}>
+            <div class="gig__date">
+              <span class="gig__day">{g.day}</span>
+              <span class="gig__month">{g.month}</span>
+            </div>
+            <div class="gig__main">
+              <h2 class="gig__title">{g.title}</h2>
+              <p class="gig__loc">{g.location}</p>
+            </div>
+            <div class="gig__meta">
+              <span class="gig__time">{g.time}</span>
+              <span class="gig__note">{g.note}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <div class="termine-note" data-reveal>
+        <p>
+          Alle Angaben ohne Gewähr — Änderungen vorbehalten. Ihr möchtet Brass.313 für euren
+          eigenen Anlass buchen?
+        </p>
+        <a class="btn btn-primary" href={url('kontakt')}>Buchungsanfrage stellen</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .gig-list { list-style: none; }
+  .gig {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    padding: 1.8rem 0;
+    border-top: 1px solid var(--line);
+    transition: padding-left 0.35s var(--ease);
+  }
+  .gig:last-child { border-bottom: 1px solid var(--line); }
+  .gig:hover { padding-left: 0.8rem; }
+  .gig__date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--line);
+    padding-right: 1.4rem;
+  }
+  .gig__day { font-family: var(--font-display); font-size: 2.8rem; line-height: 1; color: var(--gold); }
+  .gig__month { font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-dim); }
+  .gig__title { font-size: clamp(1.4rem, 3vw, 2rem); }
+  .gig__loc { color: var(--text-muted); }
+  .gig__meta { text-align: right; }
+  .gig__time { display: block; font-weight: 600; font-size: 1.05rem; }
+  .gig__note { font-size: 0.88rem; color: var(--text-dim); }
+
+  .termine-note {
+    margin-top: 3.5rem;
+    padding: 2.5rem;
+    text-align: center;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .termine-note p { color: var(--text-muted); max-width: 50ch; margin: 0 auto 1.5rem; }
+
+  @media (max-width: 640px) {
+    .gig { grid-template-columns: 80px 1fr; gap: 1.2rem; }
+    .gig__meta { grid-column: 2; text-align: left; }
+  }
+</style>

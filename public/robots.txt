@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://waltermelcher.github.io/Brass313-GlowUp/sitemap-index.xml

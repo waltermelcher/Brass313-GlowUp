@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../consts';
+---
+
+<Layout title="Impressum & Datenschutz" description="Impressum und Datenschutzerklärung von Brass.313.">
+  <article class="legal">
+    <div class="container legal__inner">
+      <header class="legal__top" data-reveal>
+        <span class="eyebrow">Rechtliches</span>
+        <h1 class="legal__title">Impressum &amp; Datenschutz</h1>
+        <p class="legal__placeholder-note">
+          ⚠️ Platzhalter: Die folgenden Texte sind Beispiel-/Dummytexte und müssen vor dem
+          Live-Gang durch rechtsgültige Angaben ersetzt werden.
+        </p>
+      </header>
+
+      <section class="legal__block" data-reveal>
+        <h2>Impressum</h2>
+        <h3>Angaben gemäß § 5 DDG</h3>
+        <p>
+          Brass.313 (Beispielangabe)<br />
+          Musterstraße 313<br />
+          72622 Musterstadt<br />
+          Deutschland
+        </p>
+
+        <h3>Vertreten durch</h3>
+        <p>Max Mustermann (Bandleitung)</p>
+
+        <h3>Kontakt</h3>
+        <p>
+          E-Mail: {SITE.email}<br />
+          Instagram: @brass.313
+        </p>
+
+        <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
+        <p>
+          Max Mustermann<br />
+          Musterstraße 313<br />
+          72622 Musterstadt
+        </p>
+
+        <h3>Haftung für Inhalte</h3>
+        <p>
+          Dies ist ein Platzhaltertext. Als Diensteanbieter sind wir gemäß den allgemeinen
+          Gesetzen für eigene Inhalte auf diesen Seiten verantwortlich. Lorem ipsum dolor sit
+          amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua.
+        </p>
+
+        <h3>Haftung für Links</h3>
+        <p>
+          Platzhaltertext: Unser Angebot enthält Links zu externen Websites Dritter, auf deren
+          Inhalte wir keinen Einfluss haben. At vero eos et accusam et justo duo dolores et ea
+          rebum. Stet clita kasd gubergren, no sea takimata sanctus est.
+        </p>
+
+        <h3>Urheberrecht</h3>
+        <p>
+          Platzhaltertext: Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen
+          Seiten unterliegen dem deutschen Urheberrecht. Duis autem vel eum iriure dolor in
+          hendrerit in vulputate velit esse molestie consequat.
+        </p>
+      </section>
+
+      <div class="divider" style="margin:3rem 0"></div>
+
+      <section class="legal__block" data-reveal>
+        <h2>Datenschutzerklärung</h2>
+
+        <h3>1. Datenschutz auf einen Blick</h3>
+        <p>
+          Platzhaltertext: Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit
+          Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Lorem ipsum
+          dolor sit amet, consetetur sadipscing elitr.
+        </p>
+
+        <h3>2. Verantwortliche Stelle</h3>
+        <p>
+          Verantwortlich für die Datenverarbeitung auf dieser Website ist (Beispielangabe):<br />
+          Max Mustermann, Musterstraße 313, 72622 Musterstadt, {SITE.email}
+        </p>
+
+        <h3>3. Hosting</h3>
+        <p>
+          Platzhaltertext: Diese Website wird bei einem externen Dienstleister gehostet (Hoster).
+          Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den
+          Servern des Hosters gespeichert. Sed diam nonumy eirmod tempor invidunt ut labore.
+        </p>
+
+        <h3>4. Erfassung von Daten</h3>
+        <p>
+          Platzhaltertext: Beim Besuch dieser Website werden automatisch Informationen in
+          sogenannten Server-Log-Dateien erfasst (z. B. Browsertyp, Betriebssystem, Referrer-URL,
+          Uhrzeit der Serveranfrage). Eine Zusammenführung dieser Daten mit anderen Datenquellen
+          wird nicht vorgenommen.
+        </p>
+
+        <h3>5. Kontaktaufnahme</h3>
+        <p>
+          Platzhaltertext: Wenn Sie uns per E-Mail oder über das Kontaktformular kontaktieren,
+          werden Ihre Angaben zwecks Bearbeitung der Anfrage bei uns gespeichert. Diese Daten geben
+          wir nicht ohne Ihre Einwilligung weiter.
+        </p>
+
+        <h3>6. Ihre Rechte</h3>
+        <p>
+          Platzhaltertext: Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre
+          gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger sowie den Zweck der
+          Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten.
+        </p>
+
+        <h3>7. Cookies &amp; Analyse</h3>
+        <p>
+          Platzhaltertext: Diese Website verwendet ggf. Cookies. Lorem ipsum dolor sit amet,
+          consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+          magna aliquyam erat.
+        </p>
+
+        <p class="legal__updated">Stand: Juni 2026 (Platzhalter)</p>
+      </section>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .legal { padding-block: calc(var(--header-h) + 3.5rem) clamp(4rem, 9vw, 7rem); }
+  .legal__inner { max-width: 820px; }
+  .legal__top { margin-bottom: 3rem; }
+  .legal__title { font-size: clamp(2.4rem, 6vw, 4rem); margin: 0.5rem 0 1.5rem; }
+  .legal__placeholder-note {
+    background: rgba(201,162,75,0.08);
+    border: 1px solid var(--gold-deep);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    color: var(--gold-bright);
+    font-size: 0.92rem;
+  }
+  .legal__block h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom: 1.5rem;
+    color: var(--gold);
+  }
+  .legal__block h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    margin: 2rem 0 0.6rem;
+    color: var(--text);
+  }
+  .legal__block p { color: var(--text-muted); margin-bottom: 0.8rem; }
+  .legal__updated { font-size: 0.85rem; color: var(--text-dim); margin-top: 2rem; }
+</style>

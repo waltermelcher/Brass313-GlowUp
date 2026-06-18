@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { OFFERS, SITE, url, asset } from '../consts';
+
+const gallery = ['images/gig-01.jpg', 'images/band-03.jpg', 'images/gig-05.jpg', 'images/band-06.jpg'];
+---
+
+<Layout title="Auftritte" description="Konzertreihen, Festzeltauftritte, Event-Umrahmungen und Firmenfeiern mit Brass.313.">
+  <PageHero
+    eyebrow="Auftritte"
+    title="Live & handgemacht"
+    text="Ob bestuhltes Konzert, tobendes Festzelt oder stilvolle Firmenfeier — Brass.313 bringt für jeden Anlass den passenden Sound mit."
+    image="images/band-05.jpg"
+  />
+
+  <section class="section-pad">
+    <div class="container">
+      <div class="offer-rows">
+        {OFFERS.map((o, i) => (
+          <article class="offer-row" data-reveal style={`--reveal-delay:${i * 0.05}s`}>
+            <div class="offer-row__num">0{i + 1}</div>
+            <div class="offer-row__body">
+              <h2 class="offer-row__title">{o.title}</h2>
+              <p class="offer-row__text">{o.text}</p>
+            </div>
+            <img class="offer-row__img" src={asset(gallery[i])} alt={o.title} loading="lazy" />
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:0">
+    <div class="container">
+      <div class="sec-head center mx-auto" data-reveal>
+        <span class="eyebrow" style="justify-content:center">Impressionen</span>
+        <h2 class="section-title">Brass.313 in Aktion</h2>
+      </div>
+      <div class="gallery">
+        <img src={asset('images/band-01.jpg')} alt="Brass.313 live" loading="lazy" data-reveal />
+        <img src={asset('images/gig-02.jpg')} alt="Brass.313 Auftritt" loading="lazy" data-reveal style="--reveal-delay:.06s" />
+        <img src={asset('images/band-08.jpg')} alt="Brass.313 Ensemble" loading="lazy" data-reveal style="--reveal-delay:.12s" />
+        <img src={asset('images/gig-05.jpg')} alt="Brass.313 Bühne" loading="lazy" data-reveal style="--reveal-delay:.18s" />
+        <img src={asset('images/band-06.jpg')} alt="Brass.313 Porträt" loading="lazy" data-reveal />
+        <img src={asset('images/gig-01.jpg')} alt="Brass.313 Konzert" loading="lazy" data-reveal style="--reveal-delay:.06s" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:0">
+    <div class="container cta center mx-auto">
+      <div data-reveal>
+        <h2 class="cta__title">Klingt nach eurem Event?</h2>
+        <p class="lead mx-auto">Erzählt uns von eurem Anlass — wir melden uns mit einem passenden Vorschlag.</p>
+        <div class="hero__actions" style="justify-content:center;margin-top:2rem">
+          <a class="btn btn-primary" href={url('kontakt')}>Jetzt anfragen</a>
+          <a class="btn btn-ghost" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .offer-rows { display: flex; flex-direction: column; gap: 1.5rem; }
+  .offer-row {
+    display: grid;
+    grid-template-columns: 70px 1fr 320px;
+    gap: 2rem;
+    align-items: center;
+    padding: 1.8rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .offer-row:first-child { border-top: 1px solid var(--line); }
+  .offer-row__num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--gold);
+  }
+  .offer-row__title { font-size: clamp(1.6rem, 3vw, 2.3rem); margin-bottom: 0.6rem; }
+  .offer-row__text { color: var(--text-muted); max-width: 52ch; }
+  .offer-row__img {
+    width: 320px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    transition: transform 0.5s var(--ease);
+  }
+  .offer-row:hover .offer-row__img { transform: scale(1.03); }
+  @media (max-width: 880px) {
+    .offer-row { grid-template-columns: 50px 1fr; }
+    .offer-row__img { display: none; }
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .gallery img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    transition: transform 0.5s var(--ease), filter 0.5s var(--ease);
+    filter: grayscale(0.15);
+  }
+  .gallery img:hover { transform: scale(1.02); filter: grayscale(0); }
+  @media (max-width: 760px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+
+  .cta { max-width: 720px; }
+  .cta__title { font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 1.2rem; }
+</style>

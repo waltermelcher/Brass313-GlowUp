@@ -16,7 +16,7 @@
   --messing-tief: #87601f;
   --messing-glow: rgba(231, 184, 92, 0.32);
 
-  /* --- reserviert: Bundesstraßen-Schild-Gelb (nur Schild + Routen-Marker) --- */
+  /* --- sparsam gesetzter Signal-/Akzentton (Highlights) --- */
   --signal: #ffd21e;
 
   /* --- linen / text --- */
@@ -35,7 +35,6 @@
   /* --- layout --- */
   --maxw: 1180px;
   --gutter: clamp(1.25rem, 4.5vw, 3.5rem);
-  --rail-w: clamp(2.6rem, 7vw, 5rem); /* Breite der Routen-Spalte links */
   --header-h: 72px;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -109,7 +108,7 @@ p { max-width: 64ch; }
 .muted { color: var(--muted); }
 .brass-text { color: var(--messing-hell); }
 
-/* km marker / eyebrow — the route's signposts (Oswald) */
+/* section eyebrow — small brass label above headlines (Oswald) */
 .km {
   display: inline-flex;
   align-items: center;
@@ -138,8 +137,8 @@ p { max-width: 64ch; }
   padding-inline: var(--gutter);
 }
 .section-pad { padding-block: clamp(4rem, 9vw, 7.5rem); }
-/* content lives in its lane, just right of the route line */
-.lane { padding-left: clamp(2.4rem, 6vw, 4.5rem); }
+/* (kept as a no-op so existing markup stays valid) */
+.lane { }
 .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--line-strong), transparent); }
 
 /* ---------- buttons ---------- */
@@ -172,7 +171,6 @@ p { max-width: 64ch; }
 }
 .btn-ghost:hover { border-color: var(--messing-hell); color: var(--messing-hell); }
 
-/* arrow that nods to a road sign */
 .btn .arr { font-family: var(--font-sign); }
 
 /* ---------- reveal ---------- */

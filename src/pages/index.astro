@@ -11,29 +11,29 @@ const groups = [
 ---
 
 <Layout>
-  <!-- ============ HERO · KM 00 ============ -->
-  <section id="start" class="hero" data-km="00" data-label="Start">
+  <!-- ============ HERO ============ -->
+  <section id="start" class="hero">
     <div class="hero__media">
       <img src={asset('images/band-04.jpg')} alt="Brass.313 live" fetchpriority="high" />
       <div class="hero__overlay"></div>
     </div>
-    <div class="container hero__content lane">
-      <span class="km" data-reveal><span class="km__dot"></span>Württemberg · entlang der B313</span>
+    <div class="container hero__content">
+      <span class="km" data-reveal><span class="km__dot"></span>Blaskapelle aus Württemberg</span>
       <h1 class="display hero__title" data-reveal style="--reveal-delay:.08s">Brass<span class="dot">.</span>313</h1>
       <p class="hero__claim" data-reveal style="--reveal-delay:.16s">{SITE.claim}</p>
       <p class="lead hero__lead" data-reveal style="--reveal-delay:.24s">{SITE.description}</p>
       <div class="hero__actions" data-reveal style="--reveal-delay:.32s">
-        <a class="btn btn-primary" href="#termine">Nächster Halt <span class="arr">→</span></a>
+        <a class="btn btn-primary" href="#termine">Termine ansehen <span class="arr">→</span></a>
         <a class="btn btn-ghost" href="#kontakt">Buchungsanfrage</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ KM 01 · Wer wir sind ============ -->
-  <section id="band" class="section-pad" data-km="01" data-label="Wer wir sind">
-    <div class="container lane intro">
+  <!-- ============ Wer wir sind ============ -->
+  <section id="band" class="section-pad">
+    <div class="container intro">
       <div class="intro__text">
-        <span class="km" data-reveal><span class="km__dot"></span>KM 01 · Wer wir sind</span>
+        <span class="km" data-reveal><span class="km__dot"></span>Wer wir sind</span>
         <h2 class="section-title" data-reveal>Sieben Musiker,<br />eine Leidenschaft</h2>
         <div class="stack" data-reveal style="--reveal-delay:.1s">
           <p class="lead">
@@ -41,10 +41,10 @@ const groups = [
             einzigartigen Klangerlebnis — handgemacht, druckvoll und mit Herz.
           </p>
           <p class="muted">
-            Der Name ist die Landkarte der Band: <span class="brass-text">3 hohe Bläser</span>,
+            Der Name verrät die Besetzung: <span class="brass-text">3 hohe Bläser</span>,
             <span class="brass-text">1 Schlagzeuger</span> und
             <span class="brass-text">3 tiefe Bläser</span> — die <span class="brass-text">313</span>
-            für die Bundesstraße B313, die sich durch unsere Heimat im Ländle zieht.
+            steht für unsere Heimat im Ländle.
           </p>
         </div>
         <a class="btn btn-ghost" href="#musiker" data-reveal style="--reveal-delay:.18s">Die Besetzung <span class="arr">→</span></a>
@@ -57,17 +57,17 @@ const groups = [
     </div>
   </section>
 
-  <!-- ============ KM 02 · Auftritte ============ -->
-  <section id="auftritte" class="section-pad segments-sec" data-km="02" data-label="Auftritte">
-    <div class="container lane">
+  <!-- ============ Auftritte ============ -->
+  <section id="auftritte" class="section-pad segments-sec">
+    <div class="container">
       <div class="sec-head" data-reveal>
-        <span class="km"><span class="km__dot"></span>KM 02 · Auftritte</span>
+        <span class="km"><span class="km__dot"></span>Auftritte</span>
         <h2 class="section-title">Für jeden Anlass<br />der richtige Sound</h2>
       </div>
       <div class="segments">
         {OFFERS.map((o, i) => (
           <article class="segment" data-reveal style={`--reveal-delay:${i * 0.07}s`}>
-            <span class="segment__tag">Abschnitt {String(i + 1).padStart(2, '0')}</span>
+            <span class="segment__tag">{String(i + 1).padStart(2, '0')}</span>
             <h3 class="segment__title">{o.title}</h3>
             <p class="segment__text muted">{o.text}</p>
           </article>
@@ -85,52 +85,47 @@ const groups = [
     </div>
   </section>
 
-  <!-- ============ KM 03 · Termine ============ -->
-  <section id="termine" class="section-pad" data-km="03" data-label="Nächster Halt">
-    <div class="container lane">
+  <!-- ============ Termine ============ -->
+  <section id="termine" class="section-pad">
+    <div class="container">
       <div class="sec-head" data-reveal>
-        <span class="km"><span class="km__dot"></span>KM 03 · Termine 2026</span>
-        <h2 class="section-title">Die Route 2026</h2>
-        <p class="lead" style="margin-top:0.8rem">Jeder Auftritt ist eine Station auf der Strecke. Kommt vorbei und erlebt Brass.313 live.</p>
+        <span class="km"><span class="km__dot"></span>Termine 2026</span>
+        <h2 class="section-title">Wo ihr uns hört</h2>
+        <p class="lead" style="margin-top:0.8rem">Kommt vorbei und erlebt Brass.313 live.</p>
       </div>
 
-      <ol class="route-stops">
+      <ul class="gig-list">
         {GIGS.map((g, i) => (
-          <li class="rstop" data-reveal style={`--reveal-delay:${i * 0.06}s`}>
-            <div class="rstop__marker">
-              <span class="rstop__node"></span>
-              {i === 0 && <span class="rstop__badge">Nächster Halt</span>}
+          <li class="gig" data-reveal style={`--reveal-delay:${i * 0.06}s`}>
+            <div class="gig__date">
+              <span class="gig__day">{g.day}</span>
+              <span class="gig__month">{g.month}</span>
+              <span class="gig__year">2026</span>
             </div>
-            <div class="rstop__card">
-              <div class="rstop__date">
-                <span class="rstop__day">{g.day}</span>
-                <span class="rstop__month">{g.month}</span>
-                <span class="rstop__year">2026</span>
-              </div>
-              <div class="rstop__main">
-                <h3 class="rstop__title">{g.title}</h3>
-                <p class="rstop__loc muted">{g.location}</p>
-              </div>
-              <div class="rstop__meta">
-                <span class="rstop__time">{g.time}</span>
-                <span class="rstop__note">{g.note}</span>
-              </div>
+            <div class="gig__main">
+              <h3 class="gig__title">{g.title}</h3>
+              <p class="gig__loc muted">{g.location}</p>
+            </div>
+            <div class="gig__meta">
+              {i === 0 && <span class="gig__next">Nächster Termin</span>}
+              <span class="gig__time">{g.time}</span>
+              <span class="gig__note">{g.note}</span>
             </div>
           </li>
         ))}
-      </ol>
-      <p class="route-note muted" data-reveal>Alle Angaben ohne Gewähr — Änderungen vorbehalten.</p>
+      </ul>
+      <p class="gig-note muted" data-reveal>Alle Angaben ohne Gewähr — Änderungen vorbehalten.</p>
     </div>
   </section>
 
-  <!-- ============ KM 04 · Musiker ============ -->
-  <section id="musiker" class="band-strip" data-km="04" data-label="Die Besetzung">
+  <!-- ============ Musiker ============ -->
+  <section id="musiker" class="band-strip">
     <div class="band-strip__media">
       <img src={asset('images/band-08.jpg')} alt="Brass.313 Ensemble" loading="lazy" />
       <div class="band-strip__overlay"></div>
     </div>
-    <div class="container lane band-strip__content">
-      <span class="km" data-reveal><span class="km__dot"></span>KM 04 · Die Besetzung</span>
+    <div class="container band-strip__content">
+      <span class="km" data-reveal><span class="km__dot"></span>Die Besetzung</span>
       <h2 class="section-title" data-reveal>Die Köpfe<br />hinter Brass.313</h2>
       <ul class="band-names" data-reveal style="--reveal-delay:.1s">
         {MUSICIANS.map((m) => <li>{m.name}</li>)}
@@ -139,15 +134,15 @@ const groups = [
   </section>
 
   <!-- Formation 3·1·3 + Fotos -->
-  <section class="section-pad" data-km="04b" data-label="Formation 3·1·3">
-    <div class="container lane">
+  <section class="section-pad">
+    <div class="container">
       <div class="sec-head" data-reveal>
         <span class="km"><span class="km__dot"></span>Die Formation</span>
         <h2 class="section-title">Warum 313?</h2>
         <p class="lead" style="margin-top:1rem">
-          Der Name verrät die Besetzung — und die Heimat: drei hohe Bläser, ein Schlagzeuger, drei
-          tiefe Bläser. Die <span class="brass-text">313</span> steht zugleich für die Bundesstraße
-          B313, die sich durch unser Ländle zieht.
+          Der Name verrät die Besetzung — und die Heimat: drei hohe Bläser, ein Schlagzeuger und
+          drei tiefe Bläser. Die <span class="brass-text">313</span> steht für unser Ländle, aus dem
+          die Band stammt.
         </p>
       </div>
 
@@ -173,11 +168,11 @@ const groups = [
     </div>
   </section>
 
-  <!-- ============ KM 05 · Kontakt ============ -->
-  <section id="kontakt" class="section-pad kontakt-sec" data-km="05" data-label="Kontakt">
-    <div class="container lane">
+  <!-- ============ Kontakt ============ -->
+  <section id="kontakt" class="section-pad kontakt-sec">
+    <div class="container">
       <div class="sec-head center mx-auto" data-reveal>
-        <span class="km" style="justify-content:center"><span class="km__dot"></span>KM 05 · Endstation: eure Bühne</span>
+        <span class="km" style="justify-content:center"><span class="km__dot"></span>Buchung &amp; Kontakt</span>
         <h2 class="section-title">Holt euch Brass.313 auf eure Bühne</h2>
       </div>
 
@@ -194,7 +189,7 @@ const groups = [
             </li>
             <li>
               <span class="contact__label">Region</span>
-              <span class="contact__plain">Württemberg · entlang der B313</span>
+              <span class="contact__plain">Württemberg · im Ländle</span>
             </li>
           </ul>
           <p class="contact__note muted">
@@ -297,30 +292,23 @@ const groups = [
   .gallery img:hover { transform: scale(1.02); filter: none; }
   @media (max-width: 760px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
 
-  /* ROUTE STOPS (Termine) */
-  .route-stops { list-style: none; position: relative; }
-  .route-stops::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: repeating-linear-gradient(to bottom, var(--messing-tief) 0 12px, transparent 12px 26px); }
-  .rstop { position: relative; padding-left: 2.8rem; padding-bottom: 1.2rem; }
-  .rstop__marker { position: absolute; left: 0; top: 1.7rem; }
-  .rstop__node { position: absolute; left: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--nacht); border: 3px solid var(--messing); transition: background 0.35s var(--ease), border-color 0.35s var(--ease); }
-  .rstop:first-child .rstop__node { background: var(--signal); border-color: var(--signal); box-shadow: 0 0 16px 0 rgba(255,210,30,0.55); }
-  .rstop:hover .rstop__node { background: var(--messing-hell); border-color: var(--messing-hell); }
-  .rstop__badge { position: absolute; left: 28px; top: -2px; font-family: var(--font-sign); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--signal); white-space: nowrap; }
-  .rstop__card { display: grid; grid-template-columns: 92px 1fr auto; gap: 1.8rem; align-items: center; padding: 1.5rem 1.6rem; background: var(--nacht-2); border: 1px solid var(--line); border-radius: 4px; transition: border-color 0.35s var(--ease), transform 0.35s var(--ease); }
-  .rstop:hover .rstop__card { border-color: var(--messing-tief); transform: translateX(4px); }
-  .rstop__date { display: flex; flex-direction: column; align-items: flex-start; border-right: 1px solid var(--line); padding-right: 1.2rem; }
-  .rstop__day { font-family: var(--font-sign); font-weight: 700; font-size: 2.6rem; line-height: 0.85; color: var(--messing-hell); }
-  .rstop__month { font-family: var(--font-sign); font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); margin-top: 0.2rem; }
-  .rstop__year { font-family: var(--font-sign); font-size: 0.66rem; letter-spacing: 0.18em; color: var(--dim); }
-  .rstop__title { font-size: clamp(1.4rem, 3vw, 2rem); }
-  .rstop__meta { text-align: right; font-family: var(--font-sign); }
-  .rstop__time { display: block; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.04em; }
-  .rstop__note { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-  .route-note { margin-top: 0.6rem; margin-left: 2.8rem; font-size: 0.86rem; }
+  /* TERMINE (Event-Karten) */
+  .gig-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+  .gig { display: grid; grid-template-columns: 92px 1fr auto; gap: 1.8rem; align-items: center; padding: 1.5rem 1.6rem; background: var(--nacht-2); border: 1px solid var(--line); border-radius: 4px; transition: border-color 0.35s var(--ease), transform 0.35s var(--ease); }
+  .gig:hover { border-color: var(--messing-tief); transform: translateX(4px); }
+  .gig__date { display: flex; flex-direction: column; align-items: flex-start; border-right: 1px solid var(--line); padding-right: 1.2rem; }
+  .gig__day { font-family: var(--font-sign); font-weight: 700; font-size: 2.6rem; line-height: 0.85; color: var(--messing-hell); }
+  .gig__month { font-family: var(--font-sign); font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); margin-top: 0.2rem; }
+  .gig__year { font-family: var(--font-sign); font-size: 0.66rem; letter-spacing: 0.18em; color: var(--dim); }
+  .gig__title { font-size: clamp(1.4rem, 3vw, 2rem); }
+  .gig__meta { text-align: right; font-family: var(--font-sign); }
+  .gig__next { display: block; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--signal); margin-bottom: 0.3rem; }
+  .gig__time { display: block; font-weight: 600; font-size: 1.05rem; letter-spacing: 0.04em; }
+  .gig__note { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .gig-note { margin-top: 1.2rem; font-size: 0.86rem; }
   @media (max-width: 660px) {
-    .rstop__card { grid-template-columns: 74px 1fr; gap: 1rem; }
-    .rstop__meta { grid-column: 2; text-align: left; }
-    .route-note { margin-left: 0; }
+    .gig { grid-template-columns: 74px 1fr; gap: 1rem; }
+    .gig__meta { grid-column: 2; text-align: left; }
   }
 
   /* BAND STRIP */
@@ -336,7 +324,7 @@ const groups = [
 
   /* FORMATION */
   .formation { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; padding: 2.5rem 0; }
-  .formation__line { position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: repeating-linear-gradient(to right, var(--messing-tief) 0 14px, transparent 14px 28px); }
+  .formation__line { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: linear-gradient(90deg, transparent, var(--messing-tief) 12%, var(--messing-tief) 88%, transparent); }
   .fgroup { position: relative; text-align: center; background: var(--nacht); padding: 1.5rem 1rem; }
   .fgroup__num { font-family: var(--font-sign); font-weight: 700; font-size: clamp(3rem, 8vw, 5rem); color: var(--messing-hell); line-height: 1; text-shadow: 0 0 40px var(--messing-glow); }
   .fgroup__notes { display: flex; justify-content: center; gap: 0.5rem; margin: 1rem 0; }
@@ -346,7 +334,7 @@ const groups = [
   .fgroup__sub { font-size: 0.92rem; }
   @media (max-width: 720px) {
     .formation { grid-template-columns: 1fr; gap: 0; }
-    .formation__line { left: 50%; right: auto; top: 0; bottom: 0; width: 2px; height: auto; background: repeating-linear-gradient(to bottom, var(--messing-tief) 0 14px, transparent 14px 28px); }
+    .formation__line { left: 50%; right: auto; top: 0; bottom: 0; width: 1px; height: auto; background: linear-gradient(180deg, transparent, var(--messing-tief) 12%, var(--messing-tief) 88%, transparent); }
   }
 
   /* MEMBERS PHOTOS */

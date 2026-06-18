@@ -52,7 +52,6 @@ const groups = [
       <div class="intro__images" data-reveal style="--reveal-delay:.12s">
         <img class="intro__img intro__img--a" src={asset('images/band-01.jpg')} alt="Brass.313 Porträt" loading="lazy" />
         <img class="intro__img intro__img--b" src={asset('images/gig-02.jpg')} alt="Brass.313 beim Auftritt" loading="lazy" />
-        <span class="intro__formation" aria-label="Formation 3-1-3">3·1·3</span>
       </div>
     </div>
   </section>
@@ -248,27 +247,6 @@ const groups = [
   .intro__img { position: absolute; object-fit: cover; border-radius: 4px; box-shadow: 0 30px 60px -25px rgba(0,0,0,0.85); border: 1px solid var(--line); }
   .intro__img--a { width: 72%; height: 82%; top: 0; left: 0; z-index: 2; }
   .intro__img--b { width: 52%; height: 56%; bottom: 0; right: 0; z-index: 3; }
-  /* formation roundel (brass medallion, not a sign) */
-  .intro__formation {
-    position: absolute;
-    top: 5%;
-    right: 0;
-    z-index: 4;
-    font-family: var(--font-sign);
-    font-weight: 700;
-    font-size: clamp(1.2rem, 2.8vw, 1.7rem);
-    letter-spacing: 0.02em;
-    color: var(--messing-hell);
-    background: rgba(22,19,15,0.82);
-    backdrop-filter: blur(6px);
-    border: 1px solid var(--messing-tief);
-    width: clamp(78px, 12vw, 112px);
-    height: clamp(78px, 12vw, 112px);
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    box-shadow: 0 0 40px -8px var(--messing-glow);
-  }
   @media (max-width: 820px) { .intro { grid-template-columns: 1fr; } .intro__images { max-width: 440px; } }
 
   /* SECTION HEAD */

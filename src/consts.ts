@@ -51,13 +51,13 @@ export type Musician = { name: string; image: string };
 // specified — only the overall formation: 3 hohe Bläser, 1 Schlagzeuger, 3 tiefe Bläser).
 // `image` = placeholder band/performance photos. Swap in real portraits here per person.
 export const MUSICIANS: Musician[] = [
-  { name: 'Bálint Takács', image: 'images/band-01.jpg' },
-  { name: 'Simon Harder', image: 'images/band-07.jpg' },
-  { name: 'Christian Geltner', image: 'images/gig-02.jpg' },
-  { name: 'Marcel Jäger', image: 'images/gig-04.jpeg' },
-  { name: 'Christoph Kolb', image: 'images/band-02.jpeg' },
-  { name: 'Lucas Class', image: 'images/band-06.jpg' },
-  { name: 'Sascha Schröter', image: 'images/band-08.jpg' },
+  { name: 'Bálint Takács', image: 'images/m1.jpg' },
+  { name: 'Simon Harder', image: 'images/m2.jpg' },
+  { name: 'Christian Geltner', image: 'images/m3.jpg' },
+  { name: 'Marcel Jäger', image: 'images/m4.jpg' },
+  { name: 'Christoph Kolb', image: 'images/m5.jpg' },
+  { name: 'Lucas Class', image: 'images/m6.jpg' },
+  { name: 'Sascha Schröter', image: 'images/m7.jpg' },
 ];
 
 export type Gig = {

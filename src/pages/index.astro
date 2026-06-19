@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import { SITE, OFFERS, GIGS, MUSICIANS, asset } from '../consts';
 
-const offerImgs = ['images/gig-01.jpg', 'images/band-03.jpg', 'images/gig-05.jpg', 'images/band-06.jpg'];
 const groups = [
   { n: 3, label: 'Hohe Bläser', sub: 'Trompeten & Flügelhörner' },
   { n: 1, label: 'Schlagzeug', sub: 'Das treibende Rückgrat' },
@@ -14,11 +13,11 @@ const groups = [
   <!-- ============ HERO ============ -->
   <section id="start" class="hero">
     <div class="hero__media">
-      <img src={asset('images/gig-01.jpg')} alt="Brass.313 live" fetchpriority="high" />
+      <img src={asset('images/hero.jpg')} alt="Brass.313 live" fetchpriority="high" />
       <div class="hero__overlay"></div>
     </div>
     <div class="container hero__content">
-      <img class="hero__logo" src={asset('images/logo-light.png')} alt="Brass.313 Logo" width="128" height="133" data-reveal />
+      <img class="hero__logo" src={asset('images/logo.png')} alt="Brass.313 Logo" width="128" height="128" data-reveal />
       <h1 class="display hero__title" data-reveal style="--reveal-delay:.06s">Brass<span class="dot">.</span>313</h1>
       <p class="hero__claim" data-reveal style="--reveal-delay:.14s">{SITE.claim}</p>
       <p class="hero__tagline" data-reveal style="--reveal-delay:.2s">Frisch <span>·</span> Jung <span>·</span> Dynamisch</p>
@@ -52,8 +51,8 @@ const groups = [
         <a class="btn btn-ghost" href="#musiker" data-reveal style="--reveal-delay:.18s">Die Besetzung <span class="arr">→</span></a>
       </div>
       <div class="intro__images" data-reveal style="--reveal-delay:.12s">
-        <img class="intro__img intro__img--a" src={asset('images/band-01.jpg')} alt="Brass.313 Porträt" loading="lazy" />
-        <img class="intro__img intro__img--b" src={asset('images/gig-02.jpg')} alt="Brass.313 beim Auftritt" loading="lazy" />
+        <img class="intro__img intro__img--a" src={asset('images/intro-1.jpg')} alt="Brass.313 Porträt" loading="lazy" />
+        <img class="intro__img intro__img--b" src={asset('images/intro-2.jpg')} alt="Brass.313 beim Auftritt" loading="lazy" />
       </div>
     </div>
   </section>
@@ -76,12 +75,12 @@ const groups = [
       </div>
 
       <div class="gallery" data-reveal style="margin-top:1.6rem">
-        <img src={asset(offerImgs[0])} alt="Brass.313 live" loading="lazy" />
-        <img src={asset('images/gig-02.jpg')} alt="Brass.313 Auftritt" loading="lazy" />
-        <img src={asset('images/band-08.jpg')} alt="Brass.313 Ensemble" loading="lazy" />
-        <img src={asset('images/band-03.jpg')} alt="Brass.313 Bühne" loading="lazy" />
-        <img src={asset('images/gig-05.jpg')} alt="Brass.313 Konzert" loading="lazy" />
-        <img src={asset('images/band-06.jpg')} alt="Brass.313 Porträt" loading="lazy" />
+        <img src={asset('images/gal-1.jpg')} alt="Brass.313 live" loading="lazy" />
+        <img src={asset('images/gal-2.jpg')} alt="Brass.313 Auftritt" loading="lazy" />
+        <img src={asset('images/gal-3.jpg')} alt="Brass.313 Ensemble" loading="lazy" />
+        <img src={asset('images/gal-4.jpg')} alt="Brass.313 Bühne" loading="lazy" />
+        <img src={asset('images/gal-5.jpg')} alt="Brass.313 Konzert" loading="lazy" />
+        <img src={asset('images/gal-6.jpg')} alt="Brass.313 Porträt" loading="lazy" />
       </div>
 
       <figure class="video" data-reveal>

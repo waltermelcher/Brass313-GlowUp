@@ -5,10 +5,10 @@
    ============================================================ */
 
 :root {
-  /* --- surface: warm espresso, kein reines Schwarz (Instrumentenkoffer-Leder) --- */
-  --nacht: #16130f;
-  --nacht-2: #1d1813;
-  --asphalt: #241e17;
+  /* --- surface: tiefes Schwarz wie auf dem Flyer --- */
+  --nacht: #090909;
+  --nacht-2: #141414;
+  --asphalt: #1b1b1b;
 
   /* --- lacquered brass --- */
   --messing: #b6822e;
@@ -31,6 +31,7 @@
   /* --- type --- */
   --font-sign: 'Oswald', 'Arial Narrow', system-ui, sans-serif;
   --font-body: 'Spectral', Georgia, 'Times New Roman', serif;
+  --font-script: 'Caveat', 'Segoe Script', cursive;
 
   /* --- layout --- */
   --maxw: 1180px;
@@ -66,8 +67,8 @@ body::before {
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(1100px 640px at 88% -8%, rgba(182, 130, 46, 0.12), transparent 60%),
-    radial-gradient(820px 560px at -8% 108%, rgba(182, 130, 46, 0.07), transparent 55%),
+    radial-gradient(1100px 640px at 88% -8%, rgba(201, 162, 75, 0.08), transparent 60%),
+    radial-gradient(820px 560px at -8% 108%, rgba(201, 162, 75, 0.04), transparent 55%),
     var(--nacht);
 }
 

@@ -26,7 +26,7 @@ export const STAGING_HOST_PATTERNS: string[] = [
 
 export const SITE = {
   name: 'Brass.313',
-  claim: "Blasmusik aus'm Ländle",
+  claim: 'Blasmusik ausm Ländle',
   email: 'info@brass313.de',
   instagram: 'https://www.instagram.com/brass.313/',
   description:

@@ -297,7 +297,7 @@ const groups = [
 
   /* MUSIKER (Foto-Karten) */
   .musiker-sec { background: linear-gradient(180deg, transparent, rgba(237,230,216,0.02)); }
-  .members { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+  .members { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 1.2rem; row-gap: 100px; }
   .member__photo {
     position: relative;
     aspect-ratio: 3/4;
@@ -315,7 +315,7 @@ const groups = [
   .member:hover .member__photo img { transform: scale(1.04); filter: none; }
   .member__name { font-family: var(--font-body); font-weight: 500; font-size: 1.25rem; text-transform: none; letter-spacing: 0; margin-top: 0.9rem; }
   @media (max-width: 900px) { .members { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 560px) { .members { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
+  @media (max-width: 560px) { .members { grid-template-columns: repeat(2, 1fr); column-gap: 1rem; } }
 
   /* FORMATION */
   .formation { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; padding: 2.5rem 0; }

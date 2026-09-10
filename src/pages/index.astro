@@ -20,9 +20,8 @@ const groups = [
       <img class="hero__logo" src={asset('images/logo.png')} alt="Brass.313 Logo" width="128" height="128" data-reveal />
       <h1 class="display hero__title" data-reveal style="--reveal-delay:.06s">Brass<span class="dot">.</span>313</h1>
       <p class="hero__claim" data-reveal style="--reveal-delay:.14s">{SITE.claim}</p>
-      <p class="hero__tagline" data-reveal style="--reveal-delay:.2s">Frisch <span>·</span> Jung <span>·</span> Dynamisch</p>
-      <p class="lead hero__lead" data-reveal style="--reveal-delay:.26s">{SITE.description}</p>
-      <div class="hero__actions" data-reveal style="--reveal-delay:.32s">
+      <p class="lead hero__lead" data-reveal style="--reveal-delay:.2s">{SITE.description}</p>
+      <div class="hero__actions" data-reveal style="--reveal-delay:.26s">
         <a class="btn btn-primary" href="#termine">Termine ansehen <span class="arr">→</span></a>
         <a class="btn btn-ghost" href="#kontakt">Buchungsanfrage</a>
       </div>
@@ -230,8 +229,6 @@ const groups = [
   .hero__title { margin: 0 0 0.3rem -0.04em; }
   .hero__title .dot { color: var(--signal); }
   .hero__claim { font-family: var(--font-script); font-size: clamp(2.2rem, 6vw, 3.8rem); line-height: 0.95; color: var(--messing-hell); margin-bottom: 0.5rem; }
-  .hero__tagline { font-family: var(--font-sign); text-transform: uppercase; letter-spacing: 0.28em; font-size: clamp(0.72rem, 1.4vw, 0.86rem); color: var(--leinen); margin-bottom: 1.6rem; }
-  .hero__tagline span { color: var(--messing-hell); margin: 0 0.2em; }
   .hero__lead { margin-bottom: 2rem; }
   .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
